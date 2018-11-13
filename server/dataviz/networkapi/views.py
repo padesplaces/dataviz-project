@@ -1,22 +1,17 @@
 from dataviz.networkapi.models import *
+from django.http import *
+from django.views.decorators.csrf import csrf_exempt
+import json
 
-from rest_framework import generics, status
-from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework.request import Request
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework import viewsets
+import sys
+sys.path.append('../')
+from data_analysis.network import compute_network
 
-from dataviz.networkapi.serializers import *
-
-
-class NodeList(generics.ListCreateAPIView):
-	queryset = Node.objects.all()
-	serializer_class = NodeSerializer
-
-
-
-class EdgeList(generics.ListCreateAPIView):
-	queryset = Edge.objects.all()
-	serializer_class = EdgeSerializer
-
+@csrf_exempt 
+def network(request):
+    if request.method == 'POST':
+        params = json.loads(request.body)
+        network = compute_network(params)
+        return HttpResponse(json.dumps(network), content_type='application/json')
+    else:
+        return HttpResponseServerError("Malformed data!")

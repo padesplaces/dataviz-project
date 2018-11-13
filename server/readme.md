@@ -1,27 +1,24 @@
 # Dataviz Server
 
 ## REST endpoints
-- /nodes GET+POST
-    - name
-- /edges GET+POST
-    - node1 Node
-    - node2 Node
-    - weight int
+- **/network** POST in json format
+    - *params*
+        - time_start
+        - time_end
+        - keywords
+    - *returns*
+        - Nodes (array)
+            - id (int) # node id
+            - name (string) # node name
+        - Edges (array)
+            - node1 (int) # node 1 id
+            - node2 (int) # node 2 id
+            - weight (int) # computed edge weight
 
 ## Setup
 Install necessary python packages (use according pip and python executables):
 ```
-> pip install django djangorestframework
-```
-
-Prepare migrations to create database:
-```
-> python manage.py makemigrations networkapi
-```
-
-Create database:
-```
-> python manage.py migrate
+> pip install django
 ```
 
 Run server:
