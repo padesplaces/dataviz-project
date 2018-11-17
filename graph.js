@@ -42,31 +42,22 @@ drag = simulation => {
 }
 
 // https://medium.com/@nick3499/d3-scaleordinal-d3-schemecategory10-categorical-ordinal-scale-cab259c4d1e5
-const scale = d3.scaleOrdinal(d3.schemeCategory10);
-
-class NetworkGraph {
-	constructor(figure_element_id, nodes, edges){
-		this.svg = figure_element_id;
-		this.nodes = nodes;
-		this.edges = edges;
-	}
-
-	//TODO : integrate code below into class
-}
-
-const width = 960, height = 500;
+const scale = d3.scaleOrdinal(d3.schemeCategory20);
 
 const svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("viewBox", "0 0 2000 1000")
 
-d3.json("data.json", function(json) {
+const svg_viewbox = svg.node().viewBox.animVal;
+const width = svg_viewbox.width;
+const height = svg_viewbox.height;
+
+d3.json("data/network.json", function(json) {
 
 	var simulation = d3.forceSimulation(json.nodes)
 		.force('link', d3.forceLink()
 			.links(json.edges)
 			.id((d) => d.id))
-		.force('charge', d3.forceManyBody().strength(-100))
+		.force('charge', d3.forceManyBody().strength(-40))
 		.force('center', d3.forceCenter(width / 2, height / 2))
 
 	var edge = svg.selectAll(".link")
@@ -80,15 +71,25 @@ d3.json("data.json", function(json) {
 		.enter().append("g")
 		.attr("class", "node")
 		.attr('fill', (d) => scale(d.group))
+		.on("mouseover", function(d) {
+			var g = d3.select(this); // The node
+			// The class is used to remove the additional text later
+			var info = g.append('text')
+			 .classed('info', true)
+			 .attr('x', 12)
+			 .attr('y', ".35em")
+			 .text(function(d) { return d.id });
+		})
+		.on("mouseout", function(d) { d3.select(this).select('text.info').remove() })
 		.call(drag(simulation));
 
 	node.append("circle")
-		.attr("r","5");
+		.attr("r", (d) => Math.sqrt(d.size)/4);
 
-	node.append("text")
-		.attr("dx", 12)
-		.attr("dy", ".35em")
-		.text(function(d) { return d.id });
+	// node.append("text")
+	// 	.attr("dx", 12)
+	// 	.attr("dy", ".35em")
+	// 	.text(function(d) { return d.id });
 
 	simulation.on("tick", function() {
 		edge.attr("x1", function(d) { return d.source.x; })
