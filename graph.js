@@ -42,35 +42,41 @@ drag = simulation => {
 }
 
 // https://medium.com/@nick3499/d3-scaleordinal-d3-schemecategory10-categorical-ordinal-scale-cab259c4d1e5
-const scale = d3.scaleOrdinal(d3.schemeCategory20);
+const color = d3.scaleOrdinal(d3.schemeCategory20);
+const radiusScale = d3.scaleSqrt();
+const edgeScale = d3.scaleSqrt();
 
 const svg = d3.select("body").append("svg")
-    .attr("viewBox", "0 0 2000 1000")
+    .attr("viewBox", "0 0 2000 1000") //size ??
 
 const svg_viewbox = svg.node().viewBox.animVal;
 const width = svg_viewbox.width;
 const height = svg_viewbox.height;
 
-d3.json("data/network.json", function(json) {
+d3.json("data/network-month.json", function(json) {
+
+	radiusScale.domain([d3.min(json.nodes, d => d.size), d3.max(json.nodes, d => d.size)]).range([5,15]);
+	edgeScale.domain([d3.min(json.edges, d => d.weight), d3.max(json.edges, d => d.weight)]).range([1,10]);
 
 	var simulation = d3.forceSimulation(json.nodes)
 		.force('link', d3.forceLink()
 			.links(json.edges)
+			.distance(250)
 			.id((d) => d.id))
-		.force('charge', d3.forceManyBody().strength(-40))
+		.force('charge', d3.forceManyBody().strength(-60))
 		.force('center', d3.forceCenter(width / 2, height / 2))
 
 	var edge = svg.selectAll(".link")
 		.data(json.edges)
 		.enter().append("line")
 		.attr("class", "link")
-		.style("stroke-width", function(d) { return Math.sqrt(d.weight); });
+		.style("stroke-width", function(d) { return edgeScale(d.weight); });
 
 	var node = svg.selectAll(".node")
 		.data(json.nodes)
 		.enter().append("g")
 		.attr("class", "node")
-		.attr('fill', (d) => scale(d.group))
+		.attr('fill', (d) => color(d.group))
 		.on("mouseover", function(d) {
 			var g = d3.select(this); // The node
 			// The class is used to remove the additional text later
@@ -82,15 +88,10 @@ d3.json("data/network.json", function(json) {
 		})
 		.on("mouseout", function(d) { d3.select(this).select('text.info').remove() })
 		.call(drag(simulation));
-
+		
 	node.append("circle")
-		.attr("r", (d) => Math.sqrt(d.size)/4);
-
-	// node.append("text")
-	// 	.attr("dx", 12)
-	// 	.attr("dy", ".35em")
-	// 	.text(function(d) { return d.id });
-
+		.attr("r", (d) => radiusScale(d.size));
+		
 	simulation.on("tick", function() {
 		edge.attr("x1", function(d) { return d.source.x; })
 			.attr("y1", function(d) { return d.source.y; })
