@@ -47,13 +47,31 @@ const radiusScale = d3.scaleSqrt();
 const edgeScale = d3.scaleSqrt();
 
 const svg = d3.select("body").append("svg")
-    .attr("viewBox", "0 0 2000 1000") //size ??
+    .attr("viewBox", "0 0 1600 800") //size ??
 
 const svg_viewbox = svg.node().viewBox.animVal;
 const width = svg_viewbox.width;
 const height = svg_viewbox.height;
 
-d3.json("data/network-month-200.json", function(json) {
+const clusters = {'pk': {'x': 1000.0, 'y': 400.0},
+ 'ps': {'x': 984.7759065022574, 'y': 476.53668647301794},
+ 'uk': {'x': 941.4213562373095, 'y': 541.4213562373095},
+ 'mx': {'x': 876.536686473018, 'y': 584.7759065022574},
+ 'es': {'x': 800.0, 'y': 600.0},
+ 'nz': {'x': 723.463313526982, 'y': 584.7759065022574},
+ 'ru': {'x': 658.5786437626905, 'y': 541.4213562373095},
+ 'bg': {'x': 615.2240934977426, 'y': 476.536686473018},
+ 'com': {'x': 600.0, 'y': 400.0},
+ 'ro': {'x': 615.2240934977426, 'y': 323.46331352698206},
+ 'net': {'x': 658.5786437626905, 'y': 258.5786437626905},
+ 'cz': {'x': 723.4633135269819, 'y': 215.2240934977427},
+ 'it': {'x': 800.0, 'y': 200.0},
+ 'cu': {'x': 876.536686473018, 'y': 215.22409349774267},
+ 'br': {'x': 941.4213562373095, 'y': 258.5786437626905},
+ 'kr': {'x': 984.7759065022573, 'y': 323.4633135269819},
+ 'mk': {'x': 1000.0, 'y': 399.99999999999994}};
+
+d3.json("data/network-month-300.json", function(json) {
 
 	radiusScale.domain([d3.min(json.nodes, d => d.size), d3.max(json.nodes, d => d.size)]).range([5,15]);
 	edgeScale.domain([d3.min(json.edges, d => d.weight), d3.max(json.edges, d => d.weight)]).range([1,10]);
@@ -61,10 +79,13 @@ d3.json("data/network-month-200.json", function(json) {
 	var simulation = d3.forceSimulation(json.nodes)
 		.force('link', d3.forceLink()
 			.links(json.edges)
-			.distance(250)
+			.distance(200)
 			.id((d) => d.id))
-		.force('charge', d3.forceManyBody().strength(-60))
+		.force('charge', d3.forceManyBody().strength(-100))
 		.force('center', d3.forceCenter(width / 2, height / 2))
+		.force('x', d3.forceX((d)=>clusters[d.group].x).strength(0.2))
+		.force('y', d3.forceY((d)=>clusters[d.group].y).strength(0.2))
+		//.force("collide", d3.forceCollide(20))
 
 	var edge = svg.selectAll(".link")
 		.data(json.edges)
