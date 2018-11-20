@@ -53,7 +53,7 @@ const svg_viewbox = svg.node().viewBox.animVal;
 const width = svg_viewbox.width;
 const height = svg_viewbox.height;
 
-d3.json("data/network-month.json", function(json) {
+d3.json("data/network-month-200.json", function(json) {
 
 	radiusScale.domain([d3.min(json.nodes, d => d.size), d3.max(json.nodes, d => d.size)]).range([5,15]);
 	edgeScale.domain([d3.min(json.edges, d => d.weight), d3.max(json.edges, d => d.weight)]).range([1,10]);
