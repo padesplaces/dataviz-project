@@ -83,8 +83,8 @@ d3.json("data/network-month-300.json", function(json) {
 			.id((d) => d.id))
 		.force('charge', d3.forceManyBody().strength(-100))
 		.force('center', d3.forceCenter(width / 2, height / 2))
-		.force('x', d3.forceX((d)=>clusters[d.group].x).strength(0.2))
-		.force('y', d3.forceY((d)=>clusters[d.group].y).strength(0.2))
+		.force('x', d3.forceX((d)=>clusters[d.group].x).strength(0.8))
+		.force('y', d3.forceY((d)=>clusters[d.group].y).strength(0.8))
 		//.force("collide", d3.forceCollide(20))
 
 	var edge = svg.selectAll(".link")
