@@ -46,8 +46,8 @@ const color = d3.scaleOrdinal(d3.schemeCategory20);
 const radiusScale = d3.scaleSqrt();
 const edgeScale = d3.scaleSqrt();
 
-const svg = d3.select("body").append("svg")
-    .attr("viewBox", "0 0 2000 1000") //size ??
+const svg = d3.select("#canvas")
+	.attr("viewBox", "0 0 " + window.innerWidth + " " + window.innerHeight) //size ??
 
 const svg_viewbox = svg.node().viewBox.animVal;
 const width = svg_viewbox.width;
