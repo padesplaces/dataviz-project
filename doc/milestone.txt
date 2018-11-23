@@ -1,0 +1,40 @@
+PROJECT ID 43
+
+SCIPERs : 214977 / 225258
+
+VIZ URL : http://pikkle.ch/
+
+GIT URL : https://github.com/padesplaces/dataviz-project
+
+
+EXPLORATORY DATA ANALYSIS :
+We used Google BigQuery to access the GDELT 2.0 "Events Mentions" and "GKG" datasets.
+At first, we filtered and chose news sources based on their number of articles, which was obviously biased. Then we tried their average article length and also a combination of the two, unfortunately it didn't yield convincing results.
+We changed our strategy and decided to scrape 104 american news sources websites from this page https://blog.feedspot.com/usa_news_websites/. We matched these with the sources in GDELT and got 83 results. From those, we only kept the top 50 according to the ranking of the article. Then we extracted all mentions from these top 50 sources in the dataset for the last year.
+For each pair of sources, we computed the coverage similarity as the ratio of the number of distinct events covered by both and the ones covered by either : size(A & B)/size(A | B) with A the set of events covered by the first source and B the second source.
+We are still looking to extract themes and tone information from the gkg dataset. We have already linked it to the articles in our dataset, we just have some trouble extracting it due to its size. Once this is done, we will be able to compare the average tone in each event mention and compute the agreement between two given sources.
+We also want to be able to filter by themes and compute different graphs.
+
+
+DESIGN
+To display interactions between different news sources, a network was for us the best candidate. At first, we meant to construct a network graph in which each node would correspond to a news source. The edges would represent common coverage of articles about events for connected sources. By fine tuning thresholds and ratios, we wanted to cluster sources together into groups representing a "filtering bubble".
+We explored that visualization with plain D3.js and Cytoscape.js but could not end up with a clean display. The nodes and their clusters always seemed to clutter, leading to a poor readability overall.
+To fix the cluttering and to have a robust readability, we switched to a radial network with all nodes positioned in a circle. Their position in the space does not mean anything except maybe an eventuel sorting (in our case an alphabetical one), but they can still be grouped to display a hierarchical edge bundling, as we plan to do later. We added circles for each node with a size relative to the number of articles written by that source. We tested first the framework Cytoscape.js to display this circle, but were to constrained to add meaningful interactions with the user. D3.js forced us to code more for the same behaviour, but was way more flexible, so we sticked to it.
+
+At first, our plan was to give the ability to the user to change different parameters, like the time scale of all articles involved in the visualization, or a search-like features for different themes. These filters would have updated the rendering by showing how news sources shared their coverage and tone depending on the context. But this was too demanding in terms of server computing; to allow the filtering system, the server would have to compute in real time a new network, working on a big dataset. 
+To avoid having a very slow visualization, we preferred using precomputed data to illustrate our subject. The actual state of the visualization doesn't explain data yet, as we did not choose our stories to tell yet; this is indeed a prototype to be used in different cases.
+
+We allowed a user interaction by adding a hovering system to highlight a given source, the right panel updates such that it displays information about selected node, and the edges connected to it are color-highlighted to be seen easily. At our current state of data analysis, we don't have every attributes we want to display, either in the right panel or as an extra visualization in the main window.
+
+In the future, we would like to add the following features:
+- Display more statistics in the right panel
+- Try to cluster similar news sources together, and bundle outgoing edges for more clarity
+- To color edges depending on the similarity in tone in their articles
+
+
+SKETCHES
+
+
+NOTES
+Our third member dropped the class a week ago, so we scaled our objectives down a bit.
+We have some trouble to render properly the visualization on Firefox navigator. It works well on Chrome, Safari and Opera though.
