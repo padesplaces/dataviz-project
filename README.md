@@ -1,4 +1,5 @@
 # Life inside an echo chamber
+<p align="center"><img src="doc/screenshot.png" width="500"/></p>
 
 ## Visualizing which news outlets share similar agendas
 ### Initial idea proposal
