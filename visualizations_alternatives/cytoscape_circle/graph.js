@@ -10,7 +10,7 @@ function getRandomColor() {
 let colorPalette = {};
 
 Promise.all([
-	fetch('network-month-200.json', {mode: 'no-cors'})
+	fetch('../../data/old/network-month-200.json', {mode: 'no-cors'})
 	.then(function(res) {
 		return res.json()
 	})
