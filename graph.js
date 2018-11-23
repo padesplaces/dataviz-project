@@ -1,128 +1,258 @@
-/*
-	Run the action when we are sure the DOM has been loaded
-	https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded
-	Example:
-	whenDocumentLoaded(() => {
-		console.log('loaded!');
-		document.getElementById('some-element');
+const BASE_SIZE = 765;
+
+var maxRadius = 0;
+
+var radiusScale = d3.scale.sqrt();
+var linkScale = d3.scale.sqrt();
+
+function Bundle(container, w, h) {
+	
+	var svg = this.svg = d3.select(container)
+	.attr("width", w)
+	.attr("height", h)
+	.append("svg:g")
+	.attr("transform", "translate(" + w/2 + "," + h/2 + ")");
+	
+	var cluster = this.cluster = d3.layout.cluster()
+	.size([360, 240])
+	.sort(function(a, b) {
+		return d3.ascending(a.name, b.name);
 	});
-*/
-function whenDocumentLoaded(action) {
-	if (document.readyState === "loading") {
-		document.addEventListener("DOMContentLoaded", action);
-	} else {
-		// `DOMContentLoaded` already fired
-		action();
-	}
+	
+	var bundle = this.bundle = d3.layout.bundle();
+	var line = this.line = d3.svg.line.radial()
+	.interpolate("bundle")
+	.tension(0.6)
+	.radius(function(d) {
+		return d.y;
+	})
+	.angle(function(d) {
+		return d.x / 180 * Math.PI;
+	});
 }
 
-drag = simulation => {
 
-	function dragstarted(d) {
-		if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-		d.fx = d.x;
-		d.fy = d.y;
-	}
-
-	function dragged(d) {
-		d.fx = d3.event.x;
-		d.fy = d3.event.y;
-	}
-
-	function dragended(d) {
-		if (!d3.event.active) simulation.alphaTarget(0);
-		d.fx = null;
-		d.fy = null;
-	}
-
-	return d3.drag()
-			.on("start", dragstarted)
-			.on("drag", dragged)
-			.on("end", dragended);
-}
-
-// https://medium.com/@nick3499/d3-scaleordinal-d3-schemecategory10-categorical-ordinal-scale-cab259c4d1e5
-const color = d3.scaleOrdinal(d3.schemeCategory20);
-const radiusScale = d3.scaleSqrt();
-const edgeScale = d3.scaleSqrt();
-
-const svg = d3.select("#canvas")
-	.attr("viewBox", "0 0 " + window.innerWidth + " " + window.innerHeight) //size ??
-
-const svg_viewbox = svg.node().viewBox.animVal;
-const width = svg_viewbox.width;
-const height = svg_viewbox.height;
-
-const clusters = {'pk': {'x': 1000.0, 'y': 400.0},
- 'ps': {'x': 984.7759065022574, 'y': 476.53668647301794},
- 'uk': {'x': 941.4213562373095, 'y': 541.4213562373095},
- 'mx': {'x': 876.536686473018, 'y': 584.7759065022574},
- 'es': {'x': 800.0, 'y': 600.0},
- 'nz': {'x': 723.463313526982, 'y': 584.7759065022574},
- 'ru': {'x': 658.5786437626905, 'y': 541.4213562373095},
- 'bg': {'x': 615.2240934977426, 'y': 476.536686473018},
- 'com': {'x': 600.0, 'y': 400.0},
- 'ro': {'x': 615.2240934977426, 'y': 323.46331352698206},
- 'net': {'x': 658.5786437626905, 'y': 258.5786437626905},
- 'cz': {'x': 723.4633135269819, 'y': 215.2240934977427},
- 'it': {'x': 800.0, 'y': 200.0},
- 'cu': {'x': 876.536686473018, 'y': 215.22409349774267},
- 'br': {'x': 941.4213562373095, 'y': 258.5786437626905},
- 'kr': {'x': 984.7759065022573, 'y': 323.4633135269819},
- 'mk': {'x': 1000.0, 'y': 399.99999999999994}};
-
-d3.json("data/network-month-300.json", function(json) {
-
-	radiusScale.domain([d3.min(json.nodes, d => d.size), d3.max(json.nodes, d => d.size)]).range([5,15]);
-	edgeScale.domain([d3.min(json.edges, d => d.weight), d3.max(json.edges, d => d.weight)]).range([1,10]);
-
-	var simulation = d3.forceSimulation(json.nodes)
-		.force('link', d3.forceLink()
-			.links(json.edges)
-			.distance(200)
-			.id((d) => d.id))
-		.force('charge', d3.forceManyBody().strength(-100))
-		.force('center', d3.forceCenter(width / 2, height / 2))
-		.force('x', d3.forceX((d)=>clusters[d.group].x).strength(0.8))
-		.force('y', d3.forceY((d)=>clusters[d.group].y).strength(0.8))
-		//.force("collide", d3.forceCollide(20))
-
-	var edge = svg.selectAll(".link")
-		.data(json.edges)
-		.enter().append("line")
-		.attr("class", "link")
-		.style("stroke-width", function(d) { return edgeScale(d.weight); });
-
-	var node = svg.selectAll(".node")
-		.data(json.nodes)
-		.enter().append("g")
-		.attr("class", "node")
-		.attr('fill', (d) => color(d.group))
-		.on("mouseover", function(d) {
-			var g = d3.select(this); // The node
-			// The class is used to remove the additional text later
-			var info = g.append('text')
-			 .classed('info', true)
-			 .attr('x', 12)
-			 .attr('y', ".35em")
-			 .text(function(d) { return d.id });
+Bundle.prototype.set_data = function(graph) {
+	var that = this;
+	var nodes = that.cluster.nodes(graph.nodes[0]);
+	var splines = that.bundle(graph.links);
+	that.link = that.svg.selectAll("path.link")
+	.data(graph.links)
+	.enter().append("svg:path")
+	.attr("class", function(d) {
+		return "link source-" + d.source.name + " target-" + d.target.name;
+	})
+	.attr("d", function(d, i) {
+		return that.line(splines[i]);
+	})
+	.style("stroke-opacity", function(d) {
+		return linkScale(d.weight);
+	});;
+	
+	
+	that.node = that.svg.selectAll("g.node")
+	.data(nodes.filter(function(n) {
+		return !n.children;
+	}))
+	.enter().append("svg:g")
+	.attr("class", "node")
+	.attr("id", function(d) {
+		return "node-" + d.key;
+	})
+	.attr("transform", function(d) {
+		return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
+	})
+	.append("svg:circle")
+	.attr("r", function(d) {
+		return radiusScale(d.size);
+	})
+	.attr("cx", function(d) {
+		return maxRadius + 5;
+	})
+	.on("mouseover", mouseovered)
+	.on("mouseout", mouseouted);
+	
+	that.svg.selectAll("g.node")
+	.append("svg:text")
+	.attr("dx", function(d) {
+		let dx = 2 * maxRadius + 10;
+		return d.x < 180 ? dx : -dx;
+	})
+	.attr("dy", ".31em")
+	.attr("text-anchor", function(d) {
+		return d.x < 180 ? "start" : "end";
+	})
+	.attr("transform", function(d) {
+		return d.x < 180 ? null : "rotate(180)";
+	})
+	.text(function(d) {
+		return d.fullname;
+	})
+	.on("mouseover", mouseovered)
+	.on("mouseout", mouseouted);
+	
+	
+	// add classes on hovers for interaction
+	function mouseovered(d) {
+		updateToolbox(d);
+		that.node
+		.each(function(n) {
+			n.target = n.source = false;
+		});
+		
+		that.link
+		.classed("link--target", function(l) {
+			if (l.target.name === d.name) {
+				return l.source.source = true;
+			}
 		})
-		.on("mouseout", function(d) { d3.select(this).select('text.info').remove() })
-		.call(drag(simulation));
+		.classed("link--source", function(l) {
+			if (l.source.name === d.name) {
+				return l.target.target = true;
+			}
+		})
+		.filter(function(l) {
+			return l.target === d || l.source === d;
+		})
+		.each(function() {
+			this.parentNode.appendChild(this);
+		});
 		
-	node.append("circle")
-		.attr("r", (d) => radiusScale(d.size));
+		that.node
+		.classed("node--target", function(n) {
+			return n.target;
+		})
+		.classed("node--source", function(n) {
+			return n.source;
+		});
 		
-	simulation.on("tick", function() {
-		edge.attr("x1", function(d) { return d.source.x; })
-			.attr("y1", function(d) { return d.source.y; })
-			.attr("x2", function(d) { return d.target.x; })
-			.attr("y2", function(d) { return d.target.y; });
+		
+	}
+	
+	function mouseouted(d) {
+		
+		updateToolbox(null);
+		that.link
+		.classed("link--target", false)
+		.classed("link--source", false);
+		
+		that.node
+		.classed("node--target", false)
+		.classed("node--source", false);
+		
+	}
+};
 
-		node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-	});
-});
 
-whenDocumentLoaded(() => {
-	// graph = new NetworkGraph(svg, nodes, edges);
-});
+let updateToolbox = function(node) {
+	let name = "";
+	if (node != undefined) {
+		name = node.fullname;
+	}
+	document.getElementById("panel_title").innerHTML = name;
+	
+	if (node == undefined || node.logo == undefined) {
+		document.getElementById("panel_logo").style.visibility = "hidden";
+	} else {
+		document.getElementById("panel_logo").style.visibility = "visible";
+		document.getElementById("panel_logo").setAttribute("src", node.logo);
+	}
+
+	if (node == undefined) {
+		document.getElementById("panel_count_articles").innerHTML = "";
+	} else {
+		document.getElementById("panel_count_articles").innerHTML = parseInt(node.size).toLocaleString('fr') + " articles written";
+	}
+}
+
+let updateSize = function(event) {
+	let container = d3.select("#canvas_container")[0][0];
+	let w = container.offsetWidth;
+	let h = container.offsetHeight;
+	
+	d3.select("#canvas")
+	.attr("width", w)
+	.attr("height", h);
+	let translateAttr = "translate(" + w/2 + "," + h/2 + ")";
+	let scaleFactor = 1;
+	if (w < BASE_SIZE) {
+		scaleFactor = w/BASE_SIZE;
+	} else if (h < BASE_SIZE) {
+		scaleFactor = h/BASE_SIZE;
+	}
+	let scaleAttr = "scale(" + scaleFactor + "," + scaleFactor + ")";
+	d3.select("g")[0][0].setAttribute("transform", translateAttr + " " + scaleAttr);
+};
+
+window.onresize = updateSize;
+
+Promise.all([
+	fetch('top50-US-year-3000.json', {mode: 'no-cors'})
+	.then(function(res) {
+		return res.json()
+	})
+	.then(function(json) {
+		maxRadius = 16;
+		radiusScale.domain([d3.min(json.nodes, d => d.size), d3.max(json.nodes, d => d.size)]).range([1,maxRadius]);
+		linkScale.domain([d3.min(json.edges, d => d.weight), d3.max(json.edges, d => d.weight)]).range([0.1,0.9]);
+		
+		let nodes = [];
+		let links = [];
+		let nodesMap = {};
+		var root = {
+			name: "root",
+			children: [],
+		};
+		nodes.push(root);
+		
+		let i = 1;
+		json.nodes.forEach(node => {
+			// default icon (missing image)
+			let icon = undefined;
+			if (node.favicon != undefined) {
+				icon = node.favicon;
+			}
+			let n = {
+				name: node.id,
+				fullname: node.name,
+				group: i,
+				key: i,
+				parent: root,
+				children: [],
+				logo: icon,
+				size: node.size,
+				radius: radiusScale(node.size),
+				edges: [],
+			}
+			nodesMap[n.name] = n;
+			nodes.push(n);
+			root.children.push(n);
+			i++;
+		});
+		
+		json.edges.forEach(edge => {
+			let e = {
+				source: nodesMap[edge.source],
+				target: nodesMap[edge.target],
+				weight: edge.weight,
+			};
+			nodesMap[edge.source].edges.push(e);
+			nodesMap[edge.target].edges.push(e);
+			links.push(e);
+		});
+		
+		let data = {nodes: nodes, links: links};
+		return data;
+	})
+	.then (function(data) {
+		let container = d3.select("#canvas_container")[0][0];
+		let bundle = new Bundle("#canvas", container.offsetWidth, container.offsetHeight - 50);
+		bundle.set_data(data);
+	})
+	
+]);
+
+// Bootstrap
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip()
+})
