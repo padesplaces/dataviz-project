@@ -1,4 +1,4 @@
-const BASE_SIZE = 600;
+const BASE_SIZE = 765;
 
 var maxRadius = 0;
 
@@ -146,7 +146,6 @@ Bundle.prototype.set_data = function(graph) {
 
 let updateToolbox = function(node) {
 	let name = "";
-	console.log(node);
 	if (node != undefined) {
 		name = node.fullname;
 	}
@@ -166,7 +165,7 @@ let updateToolbox = function(node) {
 	}
 }
 
-window.onresize = function(event) {
+let updateSize = function(event) {
 	let container = d3.select("#canvas_container")[0][0];
 	let w = container.offsetWidth;
 	let h = container.offsetHeight;
@@ -184,6 +183,8 @@ window.onresize = function(event) {
 	let scaleAttr = "scale(" + scaleFactor + "," + scaleFactor + ")";
 	d3.select("g")[0][0].setAttribute("transform", translateAttr + " " + scaleAttr);
 };
+
+window.onresize = updateSize;
 
 Promise.all([
 	fetch('top50-US-year-3000.json', {mode: 'no-cors'})
