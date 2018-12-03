@@ -78,7 +78,7 @@ CircleGraph.prototype.setData = function(graph) {
 			return "node-" + d.key;
 		})
 		.attr("transform", function(d) {
-			return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
+			return "translate(" + d.y + ")";
 		})
 		// draw circle
 		.append("svg:circle") 
