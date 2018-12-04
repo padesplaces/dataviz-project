@@ -78,7 +78,7 @@ CircleGraph.prototype.setData = function(graph) {
 			return "node-" + d.key;
 		})
 		.attr("transform", function(d) {
-			return "translate(" + d.y + ")";
+			return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
 		})
 		// draw circle
 		.append("svg:circle") 
@@ -284,6 +284,13 @@ Promise.all([
 	})
 	
 ]);
+
+window.onload = function() {
+	let logoElem = document.getElementById('panel_logo')
+	logoElem.onerror = function() {
+		logoElem.style.visibility = "hidden";
+	}
+}
 
 // Bootstrap functions
 $(function () {
