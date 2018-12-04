@@ -249,7 +249,7 @@ window.onresize = updateSize;
 
 // parse data and call graph drawing
 Promise.all([
-	fetch('data/top50-US-year/threshold_2_percent.json', {mode: 'no-cors'})
+	fetch('data/sqrt/threshold_20_permille.json', {mode: 'no-cors'})
 	.then(function(res) {
 		return res.json();
 	})
