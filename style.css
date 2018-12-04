@@ -117,9 +117,9 @@ body {
     fill: #bbb;
 }
 
-.node:hover {
+/* .node:hover {
     fill: #000;
-}
+} */
 
 .link {
     stroke: #bbb;
@@ -128,18 +128,25 @@ body {
     pointer-events: none;
 }
 
-.node:hover,
-.node--source,
-.node--target {
+.node--selected {
+    font-weight: 700;
+    font-size: 13px;
+    fill: #000;
+}
+
+.node--highlighted {
     font-weight: 700;
     fill: #777;
 }
 
+.node--unselected {
+    display: none;
+}
 
-.link--source,
-.link--target {
-    stroke-opacity: 1 !important;
-    stroke-width: 1px !important;
-    stroke: steelblue;
+.link--highlighted {
     /* stroke: #666; */
+}
+
+.link--unselected {
+    display: none;
 }

@@ -10,6 +10,9 @@ let maxRadius = 0;
 let radiusScale = d3.scale.sqrt();
 let linkScale = d3.scale.sqrt();
 
+let overable = true;
+let sourceFocus = "";
+
 // "class" constructor, used to construct the circle graph
 // param container: the html svg id that will contain the circle graph
 // param w: width of container
@@ -17,30 +20,30 @@ let linkScale = d3.scale.sqrt();
 function CircleGraph(container, w, h) {
 	// build svg super component
 	let svg = this.svg = d3.select(container)
-		.attr("width", w)
-		.attr("height", h)
-		.append("svg:g")
-		.attr("transform", "translate(" + w/2 + "," + h/2 + ")");
+	.attr("width", w)
+	.attr("height", h)
+	.append("svg:g")
+	.attr("transform", "translate(" + w/2 + "," + h/2 + ")");
 	
 	// prepare nodes cluster organisation
 	let cluster = this.cluster = d3.layout.cluster()
-		.size([360, 240])
-		.sort(function(a, b) {
-			return d3.ascending(a.name, b.name);
-		});
+	.size([360, 240])
+	.sort(function(a, b) {
+		return d3.ascending(a.name, b.name);
+	});
 	
 	let bundle = this.bundle = d3.layout.bundle();
-
+	
 	// prepare edges
 	let line = this.line = d3.svg.line.radial()
-		.interpolate("bundle")
-		.tension(0.6)
-		.radius(function(d) {
-			return d.y;
-		})
-		.angle(function(d) {
-			return d.x / 180 * Math.PI;
-		});
+	.interpolate("bundle")
+	.tension(0.6)
+	.radius(function(d) {
+		return d.y;
+	})
+	.angle(function(d) {
+		return d.x / 180 * Math.PI;
+	});
 }
 
 // boostrap circle graph with data
@@ -51,118 +54,150 @@ CircleGraph.prototype.setData = function(graph) {
 	let that = this;
 	let nodes = that.cluster.nodes(graph.nodes[0]);
 	let splines = that.bundle(graph.links);
-
+	
 	// draw edges
 	that.link = that.svg.selectAll("path.link")
-		.data(graph.links)
-		.enter().append("svg:path")
-		.attr("class", function(d) { // add basic html class, dependent on the source name
-			return "link source-" + d.source.name + " target-" + d.target.name;
-		})
-		.attr("d", function(d, i) { // compute spline line
-			return that.line(splines[i]);
-		})
-		.style("stroke-opacity", function(d) { 
-			return linkScale(d.weight); // display opacity depending on the weight of the edge
-		});
+	.data(graph.links)
+	.enter().append("svg:path")
+	.attr("class", function(d) { // add basic html class, dependent on the source name
+		return "link source-" + d.source.name + " target-" + d.target.name;
+	})
+	.attr("d", function(d, i) { // compute spline line
+		return that.line(splines[i]);
+	})
+	.style("stroke-opacity", function(d) { 
+		return linkScale(d.weight); // display opacity depending on the weight of the edge
+	});
 	
 	// draw sources nodes
 	that.node = that.svg.selectAll("g.node")
-		.data(nodes.filter(function(n) {
-			return !n.children;
-		}))
-		.enter().append("svg:g")
-		// css interaction
-		.attr("class", "node")
-		.attr("id", function(d) {
-			return "node-" + d.key;
-		})
-		.attr("transform", function(d) {
-			return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
-		})
-		// draw circle
-		.append("svg:circle") 
-		.attr("r", function(d) {
-			return radiusScale(d.size);
-		})
-		.attr("cx", function(d) {
-			return maxRadius + 5;
-		})
-		// add interactions on circle
-		.on("mouseover", mouseovered)
-		.on("mouseout", mouseouted);
+	.data(nodes.filter(function(n) {
+		return !n.children;
+	}))
+	.enter().append("svg:g")
+	// css interaction
+	.attr("class", "node")
+	.attr("id", function(d) {
+		return "node-" + d.key;
+	})
+	.attr("transform", function(d) {
+		return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
+	})
+	// draw circle
+	.append("svg:circle") 
+	.attr("r", function(d) {
+		return radiusScale(d.size);
+	})
+	.attr("cx", function(d) {
+		return maxRadius + 5;
+	})
+	// add interactions on circle
+	.on("mouseover", mouseovered)
+	.on("mouseout", mouseouted)
+	.on("click", mouseclicked);
 	
 	// draw sources text names
 	that.svg.selectAll("g.node")
-		.append("svg:text")
-		// text position behind biggest circle
-		.attr("dx", function(d) {
-			let dx = 2 * maxRadius + 10;
-			return d.x < 180 ? dx : -dx;
-		})
-		.attr("dy", ".31em")
-		.attr("text-anchor", function(d) { // move out text to the exterior for the left part of the circle
-			return d.x < 180 ? "start" : "end";
-		})
-		.attr("transform", function(d) { // turn around text on the left
-			return d.x < 180 ? null : "rotate(180)";
-		})
-		.text(function(d) {
-			return d.fullname;
-		})
-		// add interactions on text
-		.on("mouseover", mouseovered)
-		.on("mouseout", mouseouted);
+	.append("svg:text")
+	// text position behind biggest circle
+	.attr("dx", function(d) {
+		let dx = 2 * maxRadius + 10;
+		return d.x < 180 ? dx : -dx;
+	})
+	.attr("dy", ".31em")
+	.attr("text-anchor", function(d) { // move out text to the exterior for the left part of the circle
+		return d.x < 180 ? "start" : "end";
+	})
+	.attr("transform", function(d) { // turn around text on the left
+		return d.x < 180 ? null : "rotate(180)";
+	})
+	.text(function(d) {
+		return d.fullname;
+	})
+	// add interactions on text
+	.on("mouseover", mouseovered)
+	.on("mouseout", mouseouted)
+	.on("click", mouseclicked);
 	
+	// mouse click interactions
+	function mouseclicked(d) {
+		if (overable) { // if we are in overing mode
+			overable = false;
+			sourceFocus = d.name;
+		} else if (sourceFocus == d.name) { // deselect our previous source node
+			overable = true;
+			sourceFocus = "";
+		} else { // select another node
+			sourceFocus = d.name;
+		}
+		
+		if (!overable) {
+			updateToolbox(d);
+			highlightNode(d);
+		} else {
+			updateToolbox("");
+			unhighlightNode();
+		}
+	}
 	
 	// mouse hover interactions
 	function mouseovered(d) {
-		updateToolbox(d);
+		if (overable) {
+			updateToolbox(d);
+			highlightNode(d);
+		}
+	}
+	
+	// reset node hovering
+	function mouseouted(d) {
+		if (overable) {
+			unhighlightNode();
+		}
+	}
+	
+	function highlightNode(d) {
 		that.node.each(function(n) {
 			n.target = n.source = false;
 		});
 		
 		// change html classes for edges adjacent to selected node
-		that.link
-			.classed("link--target", function(l) {
-				if (l.target.name === d.name) {
-					return l.source.source = true;
-				}
-			})
-			.classed("link--source", function(l) {
-				if (l.source.name === d.name) {
-					return l.target.target = true;
-				}
-			})
-			.filter(function(l) {
-				return l.target === d || l.source === d;
-			})
-			.each(function() {
-				this.parentNode.appendChild(this);
-			});
 		
+		that.link.classed("link--highlighted", function(l) {
+			if (l.target.name === d.name) {
+				return l.source.source = true;
+			} else if (l.source.name === d.name) {
+				return l.target.target = true;
+			}else {
+				return false;
+			}
+		}).filter(function(l) {
+			return l.target === d || l.source === d;
+		}).each(function() {
+			this.parentNode.appendChild(this);
+		});
+
+		that.link.classed("link--unselected", function(l) {
+			return l.target.name !== d.name && l.source.name !== d.name;
+		});
+		
+		that.node.classed("node--selected", function(n) {
+			return n.name === d.name;
+		});
 		// change html classes for node selected and their neighbours
-		that.node
-			.classed("node--target", function(n) {
-				return n.target;
-			})
-			.classed("node--source", function(n) {
-				return n.source;
-			});	
+		that.node.classed("node--highlighted", function(n) {
+			return n.target || n.source;
+		});	
 	}
 	
-	// reset node hovering
-	function mouseouted(d) {
+	function unhighlightNode() {
 		updateToolbox(null);
-		that.link
-			.classed("link--target", false)
-			.classed("link--source", false);
-		
-		that.node
-			.classed("node--target", false)
-			.classed("node--source", false);
-		
+		that.link.classed("link--highlighted", false);
+		that.link.classed("link--unselected", false);
+		that.node.classed("node--highlighted", false);
+		that.node.classed("node--selected", false);
 	}
+	
+	
 };
 
 // update the right panel with selected node
@@ -182,7 +217,7 @@ let updateToolbox = function(node) {
 		document.getElementById("panel_logo").style.visibility = "visible";
 		document.getElementById("panel_logo").setAttribute("src", node.logo);
 	}
-
+	
 	// update # articles
 	if (node == undefined) {
 		document.getElementById("panel_count_articles").innerHTML = "";
@@ -220,16 +255,16 @@ Promise.all([
 	})
 	.then(function(json) {
 		maxRadius = 16; // maximum circle radius
-
+		
 		// compute scales for display
 		radiusScale.domain([d3.min(json.nodes, d => d.size), d3.max(json.nodes, d => d.size)]).range([1,maxRadius]);
 		linkScale.domain([d3.min(json.edges, d => d.weight), d3.max(json.edges, d => d.weight)]).range([0.1,0.9]);
 		
 		let nodes = [];
 		let links = [];
-
+		
 		let nodesMap = {}; // used for later referencing in links
-
+		
 		let root = { // root for hierarchical bundling graph
 			name: "root",
 			children: [],
@@ -242,7 +277,7 @@ Promise.all([
 			// default icon (missing image)
 			let icon = undefined;
 			if (node.favicon != undefined) icon = node.favicon;
-
+			
 			let n = {
 				name: node.id,
 				fullname: node.name,
@@ -255,7 +290,7 @@ Promise.all([
 				radius: radiusScale(node.size),
 				edges: [],
 			}
-
+			
 			nodesMap[n.name] = n;
 			nodes.push(n);
 			root.children.push(n);
