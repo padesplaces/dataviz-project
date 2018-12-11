@@ -9,6 +9,8 @@ let maxRadius = 0;
 
 let radiusScale = d3.scale.sqrt();
 let linkScale = d3.scale.sqrt();
+let nodesColorScale = d3.scale.linear();
+let linksColorScale = d3.scale.linear();
 
 let overable = true;
 let sourceFocus = "";
@@ -37,7 +39,7 @@ function CircleGraph(container, w, h) {
 	// prepare edges
 	let line = this.line = d3.svg.line.radial()
 	.interpolate("bundle")
-	.tension(0.6)
+	.tension(0.3)
 	.radius(function(d) {
 		return d.y;
 	})
@@ -67,6 +69,9 @@ CircleGraph.prototype.setData = function(graph) {
 	})
 	.style("stroke-opacity", function(d) { 
 		return linkScale(d.weight); // display opacity depending on the weight of the edge
+	})
+	.style("stroke", function(d) {
+		return d3.interpolatePiYG(1-linksColorScale(d.tone_diff));
 	});
 	
 	// draw sources nodes
@@ -91,6 +96,9 @@ CircleGraph.prototype.setData = function(graph) {
 	.attr("cx", function(d) {
 		return maxRadius + 5;
 	})
+	.attr("fill", function(d) {
+		return d3.interpolateRdBu(nodesColorScale(d.avg_tone));
+	})
 	// add interactions on circle
 	.on("mouseover", mouseovered)
 	.on("mouseout", mouseouted)
@@ -99,6 +107,7 @@ CircleGraph.prototype.setData = function(graph) {
 	// draw sources text names
 	that.svg.selectAll("g.node")
 	.append("svg:text")
+	.attr("class", "node-label")
 	// text position behind biggest circle
 	.attr("dx", function(d) {
 		let dx = 2 * maxRadius + 10;
@@ -175,7 +184,7 @@ CircleGraph.prototype.setData = function(graph) {
 		}).each(function() {
 			this.parentNode.appendChild(this);
 		});
-
+		
 		that.link.classed("link--unselected", function(l) {
 			return l.target.name !== d.name && l.source.name !== d.name;
 		});
@@ -206,6 +215,7 @@ let updateToolbox = function(node) {
 	let name = "";
 	if (node != undefined) {
 		name = node.fullname;
+		document.getElementById("panel_link").setAttribute("href", "http://" + node.name);
 	}
 	// update title
 	document.getElementById("panel_title").innerHTML = name;
@@ -248,17 +258,20 @@ let updateSize = function(event) {
 window.onresize = updateSize;
 
 // parse data and call graph drawing
-Promise.all([
-	fetch('data/sqrt/threshold_20_permille.json', {mode: 'no-cors'})
+function loadData(threshold) {
+	updateThresholdDisplay(threshold);
+	fetch('data/min/threshold_' + threshold + '_permille.json', {mode: 'no-cors'})
 	.then(function(res) {
 		return res.json();
-	})
-	.then(function(json) {
+	}).then(function(json) {
 		maxRadius = 16; // maximum circle radius
 		
 		// compute scales for display
 		radiusScale.domain([d3.min(json.nodes, d => d.size), d3.max(json.nodes, d => d.size)]).range([1,maxRadius]);
-		linkScale.domain([d3.min(json.edges, d => d.weight), d3.max(json.edges, d => d.weight)]).range([0.1,0.9]);
+		linkScale.domain([d3.min(json.edges, d => d.weight), d3.max(json.edges, d => d.weight)]).range([0.3,0.7]);
+		
+		nodesColorScale.domain([-10, 10]).range([0.0, 1.0]);
+		linksColorScale.domain([0.0, d3.max(json.edges, d => d.tone_diff)]).range([0.0,1.0]);
 		
 		let nodes = [];
 		let links = [];
@@ -289,6 +302,7 @@ Promise.all([
 				size: node.size,
 				radius: radiusScale(node.size),
 				edges: [],
+				avg_tone: node.avg_tone,
 			}
 			
 			nodesMap[n.name] = n;
@@ -303,6 +317,7 @@ Promise.all([
 				source: nodesMap[edge.source],
 				target: nodesMap[edge.target],
 				weight: edge.weight,
+				tone_diff: edge.tone_diff,
 			};
 			nodesMap[edge.source].edges.push(e);
 			nodesMap[edge.target].edges.push(e);
@@ -311,23 +326,58 @@ Promise.all([
 		
 		let data = {nodes: nodes, links: links};
 		return data;
-	})
-	.then (function(data) {
+	}).then (function(data) {
 		let container = d3.select("#canvas_container")[0][0];
+		d3.select("#canvas").remove();
+		d3.select("#canvas_container").append("svg").attr("id", "canvas");
 		let bundle = new CircleGraph("#canvas", container.offsetWidth, container.offsetHeight - 50);
 		bundle.setData(data);
-	})
-	
-]);
+	});
+}
 
 window.onload = function() {
+	loadData(30);
 	let logoElem = document.getElementById('panel_logo')
 	logoElem.onerror = function() {
 		logoElem.style.visibility = "hidden";
 	}
+
+	var mySlider = $("input.slider").slider();
+	
+	document.getElementById('slider_threshold').onchange = function() {
+		loadData(this.value);
+	}
+}
+
+function updateThresholdDisplay(threshold) {
+	document.getElementById('threshold_value').innerHTML = threshold/10. + "%";
+}
+
+function decrementThreshold() {
+	let elem = document.getElementById('slider_threshold');
+	let current = elem.value;
+	if (current > 0) {
+		elem.value = parseInt(current) - 5;
+	}
+	elem.onchange();
+}
+
+function incrementThreshold() {
+	let elem = document.getElementById('slider_threshold');
+	let current = elem.value;
+	if (current < 100) {
+		elem.value = parseInt(current) + 5;
+	}
+	elem.onchange();
 }
 
 // Bootstrap functions
 $(function () {
 	$('[data-toggle="tooltip"]').tooltip()
 })
+
+$('#ex1').slider({
+	formatter: function(value) {
+		return 'Current value: ' + value;
+	}
+});

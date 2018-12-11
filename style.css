@@ -117,26 +117,28 @@ body {
     fill: #bbb;
 }
 
-/* .node:hover {
-    fill: #000;
-} */
+.node {
+    cursor: pointer;
+}
 
 .link {
-    stroke: #bbb;
+    /* stroke: #bbb; */
     /* stroke-opacity: .4; */
     fill: none;
     pointer-events: none;
 }
 
-.node--selected {
-    font-weight: 700;
-    font-size: 13px;
-    fill: #000;
+.node-label {
+
+}
+
+.node--selected {    
+    /* fill: #000; */
 }
 
 .node--highlighted {
     font-weight: 700;
-    fill: #777;
+    /* fill: #777;r */
 }
 
 .node--unselected {
