@@ -27,9 +27,11 @@
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
 	rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" 
 	crossorigin="anonymous">
-
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.3.4/bootstrap-slider.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.3.4/css/bootstrap-slider.css" />
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 	
 	<!-- Custom scripts and styles -->
 	<link rel="stylesheet" href="style.css">
@@ -42,36 +44,45 @@
 </style>
 
 <body>
-	<div id="main_container">
-		
-		<div id="canvas_container"></div>
+	<div id="grayout" style="display: none;">
+		<span onclick="removeGrayout()" id="closeGrayout" class="clickable"><i class="fas fa-times fa-3x"></i></span>
 	</div>
-	<div id="super_panel_container">
-		<h1 id="main_title">
-			Life inside an echo chamber
-		</h1>
-		<h4 id="sub_title">
-			Top 50 USA's News Websites<a target="_blank" rel="noopener noreferrer" 
-			href="https://blog.feedspot.com/usa_news_websites/" data-toggle="tooltip" data-placement="right" 
-			title="Sources ranked by Feedspot.com. Click for full article." style="color:dodgerblue">?</a><br>
-			Same events coverage
-		</h4>
-		<div id="panel_container">
-			<div id="panel">
-				<img id="panel_logo"/>
-				<a id="panel_link" href=""><h3 id="panel_title"></h3></a>
-				<span id="panel_count_articles"></span>
-			</div>
+	<div id="super_container">
+		<div id="main_container">
+			<div id="canvas_container"></div>
 		</div>
-		<div id="panel_controls">
-			Common coverage threshold: <span id="threshold_value"></span>
-			<div class="d-flex justify-content-around" style="width: 100%">
-				<button class="btn btn-light" onclick="decrementThreshold()">-</button>
-				<input id="slider_threshold" type="range" min="0" max="100" step="5" value="30" style="width: 100%"/>
-				<button class="btn btn-light" onclick="incrementThreshold()">+</button>
+		<div id="super_panel_container">
+			<h1 id="main_title">
+				Life inside an echo chamber
+			</h1>
+			<h4 id="sub_title">
+				Top 50 USA's News Websites<a target="_blank" rel="noopener noreferrer" 
+				href="https://blog.feedspot.com/usa_news_websites/" data-toggle="tooltip" data-placement="right" 
+				title="Sources ranked by Feedspot.com. Click for full article." style="color:dodgerblue">?</a><br>
+				Same events coverage
+			</h4>
+			<div id="panel_container">
+				<div id="panel">
+					<img id="panel_logo"/>
+					<a id="panel_link" href=""><h3 id="panel_title"></h3></a>
+					<span id="panel_count_articles"></span>
+				</div>
 			</div>
+			<div id="panel_controls">
+				<div>
+					Common coverage threshold: <span id="threshold_value"></span>
+					<div class="d-flex justify-content-around" style="width: 100%">
+						<button class="btn btn-light" onclick="decrementThreshold()">-</button>
+						<input id="slider_threshold" type="range" min="0" max="100" step="5" value="30" style="width: 100%"/>
+						<button class="btn btn-light" onclick="incrementThreshold()">+</button>
+					</div>
+				</div>
+				<div>
+					<a id="tutorial_button" onclick="putGrayout()" class="clickable"><i class="fas fa-chalkboard"></i> Display tutorial</a>
+				</div>
+			</div>
+			<span id="copyright">© Pierre-Antoine Desplaces, Loïc Serafin</span>
 		</div>
-		<span id="copyright">© Pierre-Antoine Desplaces, Loïc Serafin</span>
 	</div>
 </body>
 </html>

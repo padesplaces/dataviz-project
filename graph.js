@@ -347,6 +347,8 @@ window.onload = function() {
 	document.getElementById('slider_threshold').onchange = function() {
 		loadData(this.value);
 	}
+
+	putGrayout();
 }
 
 function updateThresholdDisplay(threshold) {
@@ -369,6 +371,14 @@ function incrementThreshold() {
 		elem.value = parseInt(current) + 5;
 	}
 	elem.onchange();
+}
+
+function removeGrayout() {
+	document.getElementById('grayout').style.display = "none";
+}
+
+function putGrayout() {
+	document.getElementById('grayout').style.display = "block";
 }
 
 // Bootstrap functions
