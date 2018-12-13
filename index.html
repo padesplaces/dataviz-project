@@ -32,8 +32,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.3.4/css/bootstrap-slider.css" />
 	
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.css">
 	
 	<!-- Custom scripts and styles -->
 	<link rel="stylesheet" href="style.css">
@@ -50,6 +50,17 @@
 	</div>
 	<div id="super_container">
 		<div id="main_container">
+			<div id="theme_container" class="d-flex justify-content-end align-items-center" style="width: 100%">
+				<span id="theme_label">Theme filters :</span>
+				<select id="theme_selecter">
+					<option value="all">-</option>
+					<option value="conflict">Conflict</option>
+					<option value="eco">Economy</option>
+					<option value="env">Environment</option>
+					<option value="health">Health</option>
+					<option value="social">Social</option>
+				</select>
+			</div>
 			<div id="canvas_container"></div>
 		</div>
 		<div id="super_panel_container">
@@ -70,18 +81,7 @@
 				</div>
 			</div>
 			<div id="panel_controls">
-                <div class="d-flex justify-content-center align-items-center" style="width: 100%">
-                    Theme filters :
-                    <select id="theme_selecter">
-                        <option value="all">-</option>
-                        <option value="conflict">Conflict</option>
-                        <option value="eco">Economy</option>
-                        <option value="env">Environment</option>
-                        <option value="health">Health</option>
-                        <option value="social">Social</option>
-                    </select>
-                </div>
-				<div>
+				<div class="panel_controls_sub">
 					Common coverage threshold: <span id="threshold_value"></span>
 					<div class="d-flex justify-content-around" style="width: 100%">
 						<button class="btn btn-light" onclick="decrementThreshold()">-</button>
@@ -89,7 +89,7 @@
 						<button class="btn btn-light" onclick="incrementThreshold()">+</button>
 					</div>
 				</div>
-				<div>
+				<div class="panel_controls_sub">
 					<a id="tutorial_button" onclick="putGrayout()" class="clickable"><i class="fas fa-chalkboard"></i> Display tutorial</a>
 				</div>
 			</div>
