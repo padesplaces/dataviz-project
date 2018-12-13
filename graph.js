@@ -259,8 +259,9 @@ window.onresize = updateSize;
 
 // parse data and call graph drawing
 function loadData(threshold) {
+	let theme = 'all';
 	updateThresholdDisplay(threshold);
-	fetch('data/min/threshold_' + threshold + '_permille.json', {mode: 'no-cors'})
+	fetch('data/'+theme+'/0/threshold_' + threshold + '_permille.json', {mode: 'no-cors'})
 	.then(function(res) {
 		return res.json();
 	}).then(function(json) {
@@ -349,6 +350,9 @@ window.onload = function() {
 	}
 
 	putGrayout();
+    document.getElementById('theme_selecter').onchange = function() {
+        console.log(this.value);
+    }
 }
 
 function updateThresholdDisplay(threshold) {
@@ -385,6 +389,10 @@ function putGrayout() {
 $(function () {
 	$('[data-toggle="tooltip"]').tooltip()
 })
+
+$(document).ready(function() {
+  $('select').niceSelect();
+});
 
 $('#ex1').slider({
 	formatter: function(value) {
