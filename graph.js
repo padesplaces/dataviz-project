@@ -15,7 +15,7 @@ let linksColorScale = d3.scale.linear();
 let overable = true;
 let sourceFocus = "";
 
-let month = 0;
+let month = 'full_year';
 let theme = 'all';
 let threshold = 30;
 
@@ -238,6 +238,57 @@ let updateToolbox = function(node) {
 	} else {
 		document.getElementById("panel_count_articles").innerHTML = parseInt(node.size).toLocaleString('fr') + " articles written";
 	}
+
+	if (node == undefined){
+		document.getElementById("themes-histogram").innerHTML = "";
+	} else {
+		plot_histogram(node.name)
+	}
+}
+
+function plot_histogram(source_name){
+	
+	var margin = {top: 20, right: 20, bottom: 40, left: 60},
+	    width = 300 - margin.left - margin.right,
+	    height = 300 - margin.top - margin.bottom;
+
+	var svg = d3.select("#themes-histogram").append("svg")
+	    .attr("width", width + margin.left + margin.right)
+	    .attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	var x = d3.scale.ordinal().rangeRoundBands([0, width], .1);
+	var y = d3.scale.linear().range([height, 0]);
+
+	d3.csv("data/sources/theme_repartition/"+source_name+".csv", function(error, data) {
+	  if (error) throw error;
+
+	  x.domain(data.map(function(d) { return d.Theme; }));
+	  y.domain([0, d3.max(data, function(d) { return parseInt(d.Count); })]);
+
+	  svg.selectAll(".bar")
+	      .data(data)
+	    .enter().append("rect")
+	      .attr("class", "bar")
+	      .attr("x", function(d) { return x(d.Theme); })
+	      .attr("width", x.rangeBand())
+	      .attr("y", function(d) { return y(d.Count); })
+	      .attr("height", function(d) { return height - y(d.Count); });
+
+	  var xAxis = d3.svg.axis().scale(x).orient("bottom");
+	  var yAxis = d3.svg.axis().scale(y).orient("left");
+
+	  svg.append("g")
+		  	.attr("class", "x axis")
+		  	.attr("transform", "translate(0," + height + ")")
+		  	.call(xAxis);
+  
+	  svg.append("g")
+			.attr("class", "axis")
+			.call(yAxis);
+
+	});
 }
 
 // scale the svg when the window is resized
@@ -275,7 +326,7 @@ function loadData() {
 		linkScale.domain([d3.min(json.edges, d => d.weight), d3.max(json.edges, d => d.weight)]).range([0.3,0.7]);
 		
 		nodesColorScale.domain([-10, 10]).range([0.0, 1.0]);
-		
+
 		linksColorScale.domain([0.0, d3.max(json.edges, d => d.tone_diff)]).range([0.0,1.0]);
 		
 		let nodes = [];
@@ -350,7 +401,6 @@ window.onload = function() {
 	
 	document.getElementById('slider_threshold').onchange = function() {
 		threshold = parseInt(this.value);
-
 		loadData();
 	}
 
@@ -391,6 +441,9 @@ function removeGrayout() {
 function putGrayout() {
 	document.getElementById('grayout').style.display = "block";
 }
+
+
+
 
 // Bootstrap functions
 $(function () {

@@ -11,7 +11,7 @@
       "id": "kdvr.com",
       "size": 26635,
       "name": "FOX31 Denver KDVR",
-      "favicon": null,
+      "favicon": "https://secure.gravatar.com/blavatar/17e52d5bd05a36821dc7d1d5f90e105c?s=32",
       "avg_tone": -3.3428888000837262
     },
     {
@@ -249,7 +249,7 @@
       "id": "mercurynews.com",
       "size": 53289,
       "name": "The Mercury News",
-      "favicon": null,
+      "favicon": "https://www.mercurynews.com/wp-content/uploads/2016/10/32x32-mercury-news-white.png?w=32",
       "avg_tone": -2.992243525454105
     },
     {
@@ -347,15 +347,15 @@
   "edges": [
     {
       "source": "wtop.com",
-      "target": "miamiherald.com",
-      "weight": 0.11607843137254902,
-      "tone_diff": 0.6882558010110095
-    },
-    {
-      "source": "wtop.com",
       "target": "stltoday.com",
       "weight": 0.11712418300653595,
       "tone_diff": 0.5609850068914362
+    },
+    {
+      "source": "wtop.com",
+      "target": "miamiherald.com",
+      "weight": 0.11607843137254902,
+      "tone_diff": 0.6882558010110095
     },
     {
       "source": "wtop.com",
@@ -425,21 +425,15 @@
     },
     {
       "source": "nbcsandiego.com",
-      "target": "nbcwashington.com",
-      "weight": 0.1511627906976744,
-      "tone_diff": 0.0
-    },
-    {
-      "source": "nbcsandiego.com",
       "target": "nydailynews.com",
       "weight": 0.13953488372093023,
       "tone_diff": 0.5955159187408625
     },
     {
-      "source": "nydailynews.com",
+      "source": "nbcsandiego.com",
       "target": "nbcwashington.com",
-      "weight": 0.11368015414258188,
-      "tone_diff": 0.659511457421362
+      "weight": 0.1511627906976744,
+      "tone_diff": 0.0
     },
     {
       "source": "nydailynews.com",
@@ -452,6 +446,12 @@
       "target": "bostonherald.com",
       "weight": 0.1270672546857773,
       "tone_diff": 0.6099413712961373
+    },
+    {
+      "source": "nydailynews.com",
+      "target": "nbcwashington.com",
+      "weight": 0.11368015414258188,
+      "tone_diff": 0.659511457421362
     },
     {
       "source": "nbclosangeles.com",

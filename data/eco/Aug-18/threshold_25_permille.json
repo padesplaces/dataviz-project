@@ -11,7 +11,7 @@
       "id": "kdvr.com",
       "size": 26635,
       "name": "FOX31 Denver KDVR",
-      "favicon": null,
+      "favicon": "https://secure.gravatar.com/blavatar/17e52d5bd05a36821dc7d1d5f90e105c?s=32",
       "avg_tone": -3.5735545916976332
     },
     {
@@ -325,15 +325,27 @@
     },
     {
       "source": "kdvr.com",
-      "target": "foxnews.com",
-      "weight": 0.027552674230145867,
-      "tone_diff": 1.9835815375795784
+      "target": "bostonherald.com",
+      "weight": 0.04376012965964344,
+      "tone_diff": 0.5499252552722077
     },
     {
       "source": "kdvr.com",
       "target": "newsday.com",
       "weight": 0.03565640194489465,
       "tone_diff": 0.5732463105462341
+    },
+    {
+      "source": "kdvr.com",
+      "target": "foxnews.com",
+      "weight": 0.027552674230145867,
+      "tone_diff": 1.9835815375795784
+    },
+    {
+      "source": "kdvr.com",
+      "target": "chicagotribune.com",
+      "weight": 0.03403565640194489,
+      "tone_diff": 0.7620171047571263
     },
     {
       "source": "kdvr.com",
@@ -346,18 +358,6 @@
       "target": "fox2now.com",
       "weight": 0.04051863857374392,
       "tone_diff": 0.41940296672728505
-    },
-    {
-      "source": "kdvr.com",
-      "target": "chicagotribune.com",
-      "weight": 0.03403565640194489,
-      "tone_diff": 0.7620171047571263
-    },
-    {
-      "source": "kdvr.com",
-      "target": "bostonherald.com",
-      "weight": 0.04376012965964344,
-      "tone_diff": 0.5499252552722077
     },
     {
       "source": "ktla.com",
@@ -379,9 +379,33 @@
     },
     {
       "source": "kxan.com",
+      "target": "philly.com",
+      "weight": 0.03508771929824561,
+      "tone_diff": 0.9635358555576813
+    },
+    {
+      "source": "kxan.com",
       "target": "stltoday.com",
       "weight": 0.04736842105263158,
       "tone_diff": 0.5689099021468764
+    },
+    {
+      "source": "kxan.com",
+      "target": "seattletimes.com",
+      "weight": 0.04912280701754386,
+      "tone_diff": 0.8993589423700705
+    },
+    {
+      "source": "kxan.com",
+      "target": "nydailynews.com",
+      "weight": 0.028070175438596492,
+      "tone_diff": 0.8739738205655243
+    },
+    {
+      "source": "kxan.com",
+      "target": "bostonherald.com",
+      "weight": 0.06140350877192982,
+      "tone_diff": 0.6054224754183618
     },
     {
       "source": "kxan.com",
@@ -391,9 +415,9 @@
     },
     {
       "source": "kxan.com",
-      "target": "boston.com",
-      "weight": 0.03333333333333333,
-      "tone_diff": 0.6598469842835779
+      "target": "chicagotribune.com",
+      "weight": 0.04035087719298246,
+      "tone_diff": 1.0097451134699
     },
     {
       "source": "kxan.com",
@@ -409,81 +433,9 @@
     },
     {
       "source": "kxan.com",
-      "target": "nydailynews.com",
-      "weight": 0.028070175438596492,
-      "tone_diff": 0.8739738205655243
-    },
-    {
-      "source": "kxan.com",
-      "target": "philly.com",
-      "weight": 0.03508771929824561,
-      "tone_diff": 0.9635358555576813
-    },
-    {
-      "source": "kxan.com",
-      "target": "chicagotribune.com",
-      "weight": 0.04035087719298246,
-      "tone_diff": 1.0097451134699
-    },
-    {
-      "source": "kxan.com",
-      "target": "seattletimes.com",
-      "weight": 0.04912280701754386,
-      "tone_diff": 0.8993589423700705
-    },
-    {
-      "source": "kxan.com",
-      "target": "bostonherald.com",
-      "weight": 0.06140350877192982,
-      "tone_diff": 0.6054224754183618
-    },
-    {
-      "source": "wtop.com",
-      "target": "miamiherald.com",
-      "weight": 0.06657070888808925,
-      "tone_diff": 0.38457407116224934
-    },
-    {
-      "source": "wtop.com",
-      "target": "stltoday.com",
-      "weight": 0.03359776014932338,
-      "tone_diff": 0.6371741911621556
-    },
-    {
-      "source": "wtop.com",
-      "target": "nbcsandiego.com",
-      "weight": 0.027950310559006212,
-      "tone_diff": 1.7750621445043633
-    },
-    {
-      "source": "wtop.com",
-      "target": "foxnews.com",
-      "weight": 0.06695187165775401,
-      "tone_diff": 0.5623503797118536
-    },
-    {
-      "source": "wtop.com",
-      "target": "newsday.com",
-      "weight": 0.02957906712172924,
-      "tone_diff": 0.5131711672385962
-    },
-    {
-      "source": "wtop.com",
       "target": "boston.com",
-      "weight": 0.07040229885057471,
-      "tone_diff": 0.47994527891417743
-    },
-    {
-      "source": "wtop.com",
-      "target": "nbcwashington.com",
-      "weight": 0.028985507246376812,
-      "tone_diff": 1.055226645557169
-    },
-    {
-      "source": "wtop.com",
-      "target": "seattlepi.com",
-      "weight": 0.10053475935828877,
-      "tone_diff": 0.7842818821977355
+      "weight": 0.03333333333333333,
+      "tone_diff": 0.6598469842835779
     },
     {
       "source": "wtop.com",
@@ -493,9 +445,15 @@
     },
     {
       "source": "wtop.com",
-      "target": "philly.com",
-      "weight": 0.03182481751824817,
-      "tone_diff": 0.5778264750128235
+      "target": "stltoday.com",
+      "weight": 0.03359776014932338,
+      "tone_diff": 0.6371741911621556
+    },
+    {
+      "source": "wtop.com",
+      "target": "miamiherald.com",
+      "weight": 0.06657070888808925,
+      "tone_diff": 0.38457407116224934
     },
     {
       "source": "wtop.com",
@@ -505,15 +463,15 @@
     },
     {
       "source": "wtop.com",
-      "target": "theonion.com",
-      "weight": 0.06060606060606061,
-      "tone_diff": 3.9740084082540807
+      "target": "kron4.com",
+      "weight": 0.03313253012048193,
+      "tone_diff": 1.2506908996584438
     },
     {
       "source": "wtop.com",
-      "target": "nbcnewyork.com",
-      "weight": 0.043912175648702596,
-      "tone_diff": 0.852084277946309
+      "target": "nbcsandiego.com",
+      "weight": 0.027950310559006212,
+      "tone_diff": 1.7750621445043633
     },
     {
       "source": "wtop.com",
@@ -529,9 +487,51 @@
     },
     {
       "source": "wtop.com",
-      "target": "kron4.com",
-      "weight": 0.03313253012048193,
-      "tone_diff": 1.2506908996584438
+      "target": "nbcnewyork.com",
+      "weight": 0.043912175648702596,
+      "tone_diff": 0.852084277946309
+    },
+    {
+      "source": "wtop.com",
+      "target": "newsday.com",
+      "weight": 0.02957906712172924,
+      "tone_diff": 0.5131711672385962
+    },
+    {
+      "source": "wtop.com",
+      "target": "foxnews.com",
+      "weight": 0.06695187165775401,
+      "tone_diff": 0.5623503797118536
+    },
+    {
+      "source": "wtop.com",
+      "target": "nbcwashington.com",
+      "weight": 0.028985507246376812,
+      "tone_diff": 1.055226645557169
+    },
+    {
+      "source": "wtop.com",
+      "target": "theonion.com",
+      "weight": 0.06060606060606061,
+      "tone_diff": 3.9740084082540807
+    },
+    {
+      "source": "wtop.com",
+      "target": "seattlepi.com",
+      "weight": 0.10053475935828877,
+      "tone_diff": 0.7842818821977355
+    },
+    {
+      "source": "wtop.com",
+      "target": "philly.com",
+      "weight": 0.03182481751824817,
+      "tone_diff": 0.5778264750128235
+    },
+    {
+      "source": "wtop.com",
+      "target": "boston.com",
+      "weight": 0.07040229885057471,
+      "tone_diff": 0.47994527891417743
     },
     {
       "source": "abc13.com",
@@ -553,15 +553,21 @@
     },
     {
       "source": "kron4.com",
-      "target": "foxnews.com",
-      "weight": 0.03162650602409638,
-      "tone_diff": 1.950003521011397
+      "target": "seattletimes.com",
+      "weight": 0.04216867469879518,
+      "tone_diff": 0.787263690576889
     },
     {
       "source": "kron4.com",
-      "target": "seattlepi.com",
-      "weight": 0.04969879518072289,
-      "tone_diff": 1.3706703358903658
+      "target": "bostonherald.com",
+      "weight": 0.046686746987951805,
+      "tone_diff": 0.7904047774071215
+    },
+    {
+      "source": "kron4.com",
+      "target": "foxnews.com",
+      "weight": 0.03162650602409638,
+      "tone_diff": 1.950003521011397
     },
     {
       "source": "kron4.com",
@@ -571,21 +577,15 @@
     },
     {
       "source": "kron4.com",
-      "target": "seattletimes.com",
-      "weight": 0.04216867469879518,
-      "tone_diff": 0.787263690576889
-    },
-    {
-      "source": "kron4.com",
       "target": "theonion.com",
       "weight": 0.030303030303030304,
       "tone_diff": 1.81648678396005
     },
     {
       "source": "kron4.com",
-      "target": "bostonherald.com",
-      "weight": 0.046686746987951805,
-      "tone_diff": 0.7904047774071215
+      "target": "seattlepi.com",
+      "weight": 0.04969879518072289,
+      "tone_diff": 1.3706703358903658
     },
     {
       "source": "wgntv.com",
@@ -595,27 +595,9 @@
     },
     {
       "source": "wgntv.com",
-      "target": "foxnews.com",
-      "weight": 0.031724137931034485,
-      "tone_diff": 1.935095675887625
-    },
-    {
-      "source": "wgntv.com",
-      "target": "fox2now.com",
-      "weight": 0.04689655172413793,
-      "tone_diff": 0.22617048062742154
-    },
-    {
-      "source": "wgntv.com",
       "target": "seattletimes.com",
       "weight": 0.03310344827586207,
       "tone_diff": 0.8813675780841277
-    },
-    {
-      "source": "wgntv.com",
-      "target": "nbcnews.com",
-      "weight": 0.031724137931034485,
-      "tone_diff": 1.914077017406146
     },
     {
       "source": "wgntv.com",
@@ -630,46 +612,28 @@
       "tone_diff": 2.5890184037162713
     },
     {
+      "source": "wgntv.com",
+      "target": "nbcnews.com",
+      "weight": 0.031724137931034485,
+      "tone_diff": 1.914077017406146
+    },
+    {
+      "source": "wgntv.com",
+      "target": "foxnews.com",
+      "weight": 0.031724137931034485,
+      "tone_diff": 1.935095675887625
+    },
+    {
+      "source": "wgntv.com",
+      "target": "fox2now.com",
+      "weight": 0.04689655172413793,
+      "tone_diff": 0.22617048062742154
+    },
+    {
       "source": "boston.com",
       "target": "stltoday.com",
       "weight": 0.03879310344827586,
       "tone_diff": 0.890681767658055
-    },
-    {
-      "source": "boston.com",
-      "target": "foxnews.com",
-      "weight": 0.03735632183908046,
-      "tone_diff": 1.030145229114982
-    },
-    {
-      "source": "boston.com",
-      "target": "newsmax.com",
-      "weight": 0.02658045977011494,
-      "tone_diff": 0.9134195152277064
-    },
-    {
-      "source": "boston.com",
-      "target": "seattlepi.com",
-      "weight": 0.09554597701149425,
-      "tone_diff": 0.6831446714570748
-    },
-    {
-      "source": "boston.com",
-      "target": "nbcnews.com",
-      "weight": 0.02658045977011494,
-      "tone_diff": 1.866770924820081
-    },
-    {
-      "source": "boston.com",
-      "target": "philly.com",
-      "weight": 0.04310344827586207,
-      "tone_diff": 1.0630915463822976
-    },
-    {
-      "source": "boston.com",
-      "target": "chicagotribune.com",
-      "weight": 0.031609195402298854,
-      "tone_diff": 1.1090745914612867
     },
     {
       "source": "boston.com",
@@ -682,6 +646,42 @@
       "target": "bostonherald.com",
       "weight": 0.08261494252873564,
       "tone_diff": 1.0032623122649902
+    },
+    {
+      "source": "boston.com",
+      "target": "newsmax.com",
+      "weight": 0.02658045977011494,
+      "tone_diff": 0.9134195152277064
+    },
+    {
+      "source": "boston.com",
+      "target": "nbcnews.com",
+      "weight": 0.02658045977011494,
+      "tone_diff": 1.866770924820081
+    },
+    {
+      "source": "boston.com",
+      "target": "foxnews.com",
+      "weight": 0.03735632183908046,
+      "tone_diff": 1.030145229114982
+    },
+    {
+      "source": "boston.com",
+      "target": "chicagotribune.com",
+      "weight": 0.031609195402298854,
+      "tone_diff": 1.1090745914612867
+    },
+    {
+      "source": "boston.com",
+      "target": "seattlepi.com",
+      "weight": 0.09554597701149425,
+      "tone_diff": 0.6831446714570748
+    },
+    {
+      "source": "boston.com",
+      "target": "philly.com",
+      "weight": 0.04310344827586207,
+      "tone_diff": 1.0630915463822976
     },
     {
       "source": "nypost.com",
@@ -697,21 +697,21 @@
     },
     {
       "source": "philly.com",
-      "target": "foxnews.com",
-      "weight": 0.039708029197080295,
-      "tone_diff": 1.0836808626728502
-    },
-    {
-      "source": "philly.com",
-      "target": "seattlepi.com",
-      "weight": 0.033576642335766425,
-      "tone_diff": 1.0301516875670618
-    },
-    {
-      "source": "philly.com",
       "target": "seattletimes.com",
       "weight": 0.04467153284671533,
       "tone_diff": 0.9846119446029883
+    },
+    {
+      "source": "philly.com",
+      "target": "bostonherald.com",
+      "weight": 0.03548485775466503,
+      "tone_diff": 0.6856668302185682
+    },
+    {
+      "source": "philly.com",
+      "target": "foxnews.com",
+      "weight": 0.039708029197080295,
+      "tone_diff": 1.0836808626728502
     },
     {
       "source": "philly.com",
@@ -721,27 +721,9 @@
     },
     {
       "source": "philly.com",
-      "target": "bostonherald.com",
-      "weight": 0.03548485775466503,
-      "tone_diff": 0.6856668302185682
-    },
-    {
-      "source": "cbsnews.com",
-      "target": "nbcsandiego.com",
-      "weight": 0.027950310559006212,
-      "tone_diff": 0.8403421484049846
-    },
-    {
-      "source": "cbsnews.com",
-      "target": "foxnews.com",
-      "weight": 0.029821843532145623,
-      "tone_diff": 1.481897379829608
-    },
-    {
-      "source": "cbsnews.com",
       "target": "seattlepi.com",
-      "weight": 0.04453911696359411,
-      "tone_diff": 0.8740189172851871
+      "weight": 0.033576642335766425,
+      "tone_diff": 1.0301516875670618
     },
     {
       "source": "cbsnews.com",
@@ -751,9 +733,9 @@
     },
     {
       "source": "cbsnews.com",
-      "target": "theonion.com",
-      "weight": 0.030303030303030304,
-      "tone_diff": 3.934316912561469
+      "target": "nbcsandiego.com",
+      "weight": 0.027950310559006212,
+      "tone_diff": 0.8403421484049846
     },
     {
       "source": "cbsnews.com",
@@ -768,6 +750,24 @@
       "tone_diff": 1.8012358218372573
     },
     {
+      "source": "cbsnews.com",
+      "target": "foxnews.com",
+      "weight": 0.029821843532145623,
+      "tone_diff": 1.481897379829608
+    },
+    {
+      "source": "cbsnews.com",
+      "target": "theonion.com",
+      "weight": 0.030303030303030304,
+      "tone_diff": 3.934316912561469
+    },
+    {
+      "source": "cbsnews.com",
+      "target": "seattlepi.com",
+      "weight": 0.04453911696359411,
+      "tone_diff": 0.8740189172851871
+    },
+    {
       "source": "fox2now.com",
       "target": "stltoday.com",
       "weight": 0.051961823966065745,
@@ -775,15 +775,27 @@
     },
     {
       "source": "foxnews.com",
-      "target": "miamiherald.com",
-      "weight": 0.05217704210147535,
-      "tone_diff": 0.5569506857863762
+      "target": "nbclosangeles.com",
+      "weight": 0.0299625468164794,
+      "tone_diff": 2.049281066448307
     },
     {
       "source": "foxnews.com",
       "target": "stltoday.com",
       "weight": 0.036397573495100324,
       "tone_diff": 1.2927040554780025
+    },
+    {
+      "source": "foxnews.com",
+      "target": "seattletimes.com",
+      "weight": 0.04308494326893591,
+      "tone_diff": 0.8135337514561574
+    },
+    {
+      "source": "foxnews.com",
+      "target": "miamiherald.com",
+      "weight": 0.05217704210147535,
+      "tone_diff": 0.5569506857863762
     },
     {
       "source": "foxnews.com",
@@ -799,45 +811,9 @@
     },
     {
       "source": "foxnews.com",
-      "target": "newsday.com",
-      "weight": 0.032423208191126277,
-      "tone_diff": 0.955501642714863
-    },
-    {
-      "source": "foxnews.com",
-      "target": "newsmax.com",
-      "weight": 0.02965453989605625,
-      "tone_diff": 1.5991513467783336
-    },
-    {
-      "source": "foxnews.com",
-      "target": "seattlepi.com",
-      "weight": 0.05398802980334677,
-      "tone_diff": 0.9755742373493236
-    },
-    {
-      "source": "foxnews.com",
-      "target": "nbclosangeles.com",
-      "weight": 0.0299625468164794,
-      "tone_diff": 2.049281066448307
-    },
-    {
-      "source": "foxnews.com",
-      "target": "nbcchicago.com",
-      "weight": 0.037037037037037035,
-      "tone_diff": 2.63412217336036
-    },
-    {
-      "source": "foxnews.com",
-      "target": "seattletimes.com",
-      "weight": 0.04308494326893591,
-      "tone_diff": 0.8135337514561574
-    },
-    {
-      "source": "foxnews.com",
-      "target": "theonion.com",
-      "weight": 0.06060606060606061,
-      "tone_diff": 2.0498911362397494
+      "target": "bostonherald.com",
+      "weight": 0.06056898133985929,
+      "tone_diff": 1.0085093645025254
     },
     {
       "source": "foxnews.com",
@@ -847,15 +823,39 @@
     },
     {
       "source": "foxnews.com",
-      "target": "bostonherald.com",
-      "weight": 0.06056898133985929,
-      "tone_diff": 1.0085093645025254
+      "target": "newsmax.com",
+      "weight": 0.02965453989605625,
+      "tone_diff": 1.5991513467783336
+    },
+    {
+      "source": "foxnews.com",
+      "target": "newsday.com",
+      "weight": 0.032423208191126277,
+      "tone_diff": 0.955501642714863
     },
     {
       "source": "foxnews.com",
       "target": "huffingtonpost.com",
       "weight": 0.03142488161859664,
       "tone_diff": 1.9647073126077481
+    },
+    {
+      "source": "foxnews.com",
+      "target": "theonion.com",
+      "weight": 0.06060606060606061,
+      "tone_diff": 2.0498911362397494
+    },
+    {
+      "source": "foxnews.com",
+      "target": "seattlepi.com",
+      "weight": 0.05398802980334677,
+      "tone_diff": 0.9755742373493236
+    },
+    {
+      "source": "foxnews.com",
+      "target": "nbcchicago.com",
+      "weight": 0.037037037037037035,
+      "tone_diff": 2.63412217336036
     },
     {
       "source": "nbcnews.com",
@@ -877,12 +877,6 @@
     },
     {
       "source": "nbcnews.com",
-      "target": "newsday.com",
-      "weight": 0.030147895335608646,
-      "tone_diff": 1.6550746610375389
-    },
-    {
-      "source": "nbcnews.com",
       "target": "nbcchicago.com",
       "weight": 0.037037037037037035,
       "tone_diff": 1.8422292115875376
@@ -894,10 +888,10 @@
       "tone_diff": 2.6644140632861
     },
     {
-      "source": "newsday.com",
-      "target": "seattlepi.com",
-      "weight": 0.05460750853242321,
-      "tone_diff": 1.0688855788430789
+      "source": "nbcnews.com",
+      "target": "newsday.com",
+      "weight": 0.030147895335608646,
+      "tone_diff": 1.6550746610375389
     },
     {
       "source": "newsday.com",
@@ -907,15 +901,21 @@
     },
     {
       "source": "newsday.com",
+      "target": "seattletimes.com",
+      "weight": 0.044937428896473265,
+      "tone_diff": 0.5243545190745829
+    },
+    {
+      "source": "newsday.com",
       "target": "chicagotribune.com",
       "weight": 0.026166097838452786,
       "tone_diff": 0.9252284303338622
     },
     {
       "source": "newsday.com",
-      "target": "seattletimes.com",
-      "weight": 0.044937428896473265,
-      "tone_diff": 0.5243545190745829
+      "target": "seattlepi.com",
+      "weight": 0.05460750853242321,
+      "tone_diff": 1.0688855788430789
     },
     {
       "source": "newsday.com",
@@ -925,15 +925,15 @@
     },
     {
       "source": "newsmax.com",
-      "target": "nbcwashington.com",
-      "weight": 0.041407867494824016,
-      "tone_diff": 1.1274674291144962
+      "target": "seattletimes.com",
+      "weight": 0.03546316111280954,
+      "tone_diff": 1.3241877888644638
     },
     {
       "source": "newsmax.com",
-      "target": "seattlepi.com",
-      "weight": 0.03362885967594008,
-      "tone_diff": 1.3646670976150814
+      "target": "nbcwashington.com",
+      "weight": 0.041407867494824016,
+      "tone_diff": 1.1274674291144962
     },
     {
       "source": "newsmax.com",
@@ -943,33 +943,33 @@
     },
     {
       "source": "newsmax.com",
-      "target": "nbcchicago.com",
-      "weight": 0.03418803418803419,
-      "tone_diff": 0.7181865332739704
-    },
-    {
-      "source": "newsmax.com",
-      "target": "seattletimes.com",
-      "weight": 0.03546316111280954,
-      "tone_diff": 1.3241877888644638
-    },
-    {
-      "source": "newsmax.com",
       "target": "theonion.com",
       "weight": 0.09090909090909091,
       "tone_diff": 1.9419056630309168
     },
     {
       "source": "newsmax.com",
-      "target": "nbcnewyork.com",
-      "weight": 0.02594810379241517,
-      "tone_diff": 2.129914350649832
+      "target": "seattlepi.com",
+      "weight": 0.03362885967594008,
+      "tone_diff": 1.3646670976150814
+    },
+    {
+      "source": "newsmax.com",
+      "target": "nbcchicago.com",
+      "weight": 0.03418803418803419,
+      "tone_diff": 0.7181865332739704
     },
     {
       "source": "newsmax.com",
       "target": "bostonherald.com",
       "weight": 0.026001835423676966,
       "tone_diff": 0.7652577161905519
+    },
+    {
+      "source": "newsmax.com",
+      "target": "nbcnewyork.com",
+      "weight": 0.02594810379241517,
+      "tone_diff": 2.129914350649832
     },
     {
       "source": "newsweek.com",
@@ -991,27 +991,9 @@
     },
     {
       "source": "stltoday.com",
-      "target": "seattlepi.com",
-      "weight": 0.04269715352309846,
-      "tone_diff": 0.8150419026211263
-    },
-    {
-      "source": "stltoday.com",
       "target": "nbclosangeles.com",
       "weight": 0.03745318352059925,
       "tone_diff": 0.8996998921807766
-    },
-    {
-      "source": "stltoday.com",
-      "target": "nbcsandiego.com",
-      "weight": 0.027950310559006212,
-      "tone_diff": 1.4783244951023005
-    },
-    {
-      "source": "stltoday.com",
-      "target": "nbcchicago.com",
-      "weight": 0.05982905982905983,
-      "tone_diff": 0.8354947851178551
     },
     {
       "source": "stltoday.com",
@@ -1021,9 +1003,9 @@
     },
     {
       "source": "stltoday.com",
-      "target": "nbcnewyork.com",
-      "weight": 0.03592814371257485,
-      "tone_diff": 1.7173954829783327
+      "target": "nbcsandiego.com",
+      "weight": 0.027950310559006212,
+      "tone_diff": 1.4783244951023005
     },
     {
       "source": "stltoday.com",
@@ -1033,21 +1015,39 @@
     },
     {
       "source": "stltoday.com",
+      "target": "seattlepi.com",
+      "weight": 0.04269715352309846,
+      "tone_diff": 0.8150419026211263
+    },
+    {
+      "source": "stltoday.com",
+      "target": "nbcchicago.com",
+      "weight": 0.05982905982905983,
+      "tone_diff": 0.8354947851178551
+    },
+    {
+      "source": "stltoday.com",
       "target": "bostonherald.com",
       "weight": 0.050474151116549404,
       "tone_diff": 0.5894744658165129
     },
     {
-      "source": "theonion.com",
-      "target": "seattlepi.com",
-      "weight": 0.030303030303030304,
-      "tone_diff": 3.3388137375465607
+      "source": "stltoday.com",
+      "target": "nbcnewyork.com",
+      "weight": 0.03592814371257485,
+      "tone_diff": 1.7173954829783327
     },
     {
       "source": "theonion.com",
       "target": "chicagotribune.com",
       "weight": 0.030303030303030304,
       "tone_diff": 2.5904252635827003
+    },
+    {
+      "source": "theonion.com",
+      "target": "seattlepi.com",
+      "weight": 0.030303030303030304,
+      "tone_diff": 3.3388137375465607
     },
     {
       "source": "theonion.com",
@@ -1069,33 +1069,9 @@
     },
     {
       "source": "seattlepi.com",
-      "target": "miamiherald.com",
-      "weight": 0.0852824757106873,
-      "tone_diff": 0.5491650652926015
-    },
-    {
-      "source": "seattlepi.com",
       "target": "nbclosangeles.com",
       "weight": 0.0299625468164794,
       "tone_diff": 0.8446345669863164
-    },
-    {
-      "source": "seattlepi.com",
-      "target": "nbcsandiego.com",
-      "weight": 0.034161490683229816,
-      "tone_diff": 1.4150516426535111
-    },
-    {
-      "source": "seattlepi.com",
-      "target": "chicagotribune.com",
-      "weight": 0.030612244897959183,
-      "tone_diff": 1.4873351018029999
-    },
-    {
-      "source": "seattlepi.com",
-      "target": "nbcchicago.com",
-      "weight": 0.037037037037037035,
-      "tone_diff": 0.8659955652565383
     },
     {
       "source": "seattlepi.com",
@@ -1105,9 +1081,21 @@
     },
     {
       "source": "seattlepi.com",
-      "target": "nbcnewyork.com",
-      "weight": 0.041916167664670656,
-      "tone_diff": 1.11762415833637
+      "target": "miamiherald.com",
+      "weight": 0.0852824757106873,
+      "tone_diff": 0.5491650652926015
+    },
+    {
+      "source": "seattlepi.com",
+      "target": "chicagotribune.com",
+      "weight": 0.030612244897959183,
+      "tone_diff": 1.4873351018029999
+    },
+    {
+      "source": "seattlepi.com",
+      "target": "nbcsandiego.com",
+      "weight": 0.034161490683229816,
+      "tone_diff": 1.4150516426535111
     },
     {
       "source": "seattlepi.com",
@@ -1117,9 +1105,21 @@
     },
     {
       "source": "seattlepi.com",
+      "target": "nbcchicago.com",
+      "weight": 0.037037037037037035,
+      "tone_diff": 0.8659955652565383
+    },
+    {
+      "source": "seattlepi.com",
       "target": "bostonherald.com",
       "weight": 0.07678189048638727,
       "tone_diff": 0.8998007326704286
+    },
+    {
+      "source": "seattlepi.com",
+      "target": "nbcnewyork.com",
+      "weight": 0.041916167664670656,
+      "tone_diff": 1.11762415833637
     },
     {
       "source": "denverpost.com",
@@ -1129,27 +1129,9 @@
     },
     {
       "source": "nbcchicago.com",
-      "target": "nbcwashington.com",
-      "weight": 0.039886039886039885,
-      "tone_diff": 0.16132271116394054
-    },
-    {
-      "source": "nbcchicago.com",
       "target": "nbcsandiego.com",
       "weight": 0.055900621118012424,
       "tone_diff": 0.08116841294250891
-    },
-    {
-      "source": "nbcchicago.com",
-      "target": "seattletimes.com",
-      "weight": 0.039886039886039885,
-      "tone_diff": 0.8326085484283323
-    },
-    {
-      "source": "nbcchicago.com",
-      "target": "nbcnewyork.com",
-      "weight": 0.03133903133903134,
-      "tone_diff": 0.3194737835472538
     },
     {
       "source": "nbcchicago.com",
@@ -1165,21 +1147,27 @@
     },
     {
       "source": "nbcchicago.com",
+      "target": "seattletimes.com",
+      "weight": 0.039886039886039885,
+      "tone_diff": 0.8326085484283323
+    },
+    {
+      "source": "nbcchicago.com",
+      "target": "nbcnewyork.com",
+      "weight": 0.03133903133903134,
+      "tone_diff": 0.3194737835472538
+    },
+    {
+      "source": "nbcchicago.com",
       "target": "chicagotribune.com",
       "weight": 0.03418803418803419,
       "tone_diff": 1.743203256839525
     },
     {
-      "source": "nbcnewyork.com",
+      "source": "nbcchicago.com",
       "target": "nbcwashington.com",
-      "weight": 0.043478260869565216,
-      "tone_diff": 0.24433864778125902
-    },
-    {
-      "source": "nbcnewyork.com",
-      "target": "nbclosangeles.com",
-      "weight": 0.026217228464419477,
-      "tone_diff": 0.24656339352498272
+      "weight": 0.039886039886039885,
+      "tone_diff": 0.16132271116394054
     },
     {
       "source": "nbcnewyork.com",
@@ -1189,15 +1177,15 @@
     },
     {
       "source": "nbcnewyork.com",
-      "target": "seattletimes.com",
-      "weight": 0.03792415169660679,
-      "tone_diff": 1.07567164215339
-    },
-    {
-      "source": "nbcnewyork.com",
       "target": "nbcphiladelphia.com",
       "weight": 0.030985915492957747,
       "tone_diff": 0.18553987198809452
+    },
+    {
+      "source": "nbcnewyork.com",
+      "target": "nbclosangeles.com",
+      "weight": 0.026217228464419477,
+      "tone_diff": 0.24656339352498272
     },
     {
       "source": "nbcnewyork.com",
@@ -1207,9 +1195,21 @@
     },
     {
       "source": "nbcnewyork.com",
+      "target": "seattletimes.com",
+      "weight": 0.03792415169660679,
+      "tone_diff": 1.07567164215339
+    },
+    {
+      "source": "nbcnewyork.com",
       "target": "chicagotribune.com",
       "weight": 0.027944111776447105,
       "tone_diff": 2.0746977556797845
+    },
+    {
+      "source": "nbcnewyork.com",
+      "target": "nbcwashington.com",
+      "weight": 0.043478260869565216,
+      "tone_diff": 0.24433864778125902
     },
     {
       "source": "miamiherald.com",
@@ -1219,9 +1219,9 @@
     },
     {
       "source": "nbcsandiego.com",
-      "target": "nbcwashington.com",
-      "weight": 0.040372670807453416,
-      "tone_diff": 0.36731152701418446
+      "target": "nbcphiladelphia.com",
+      "weight": 0.043478260869565216,
+      "tone_diff": 0.07077596058578504
     },
     {
       "source": "nbcsandiego.com",
@@ -1231,21 +1231,21 @@
     },
     {
       "source": "nbcsandiego.com",
-      "target": "nbcphiladelphia.com",
-      "weight": 0.043478260869565216,
-      "tone_diff": 0.07077596058578504
-    },
-    {
-      "source": "nbcsandiego.com",
       "target": "bostonherald.com",
       "weight": 0.034161490683229816,
       "tone_diff": 0.9307169990581464
     },
     {
-      "source": "bostonherald.com",
+      "source": "nbcsandiego.com",
       "target": "nbcwashington.com",
-      "weight": 0.031055900621118012,
-      "tone_diff": 0.979145221119891
+      "weight": 0.040372670807453416,
+      "tone_diff": 0.36731152701418446
+    },
+    {
+      "source": "bostonherald.com",
+      "target": "nbcphiladelphia.com",
+      "weight": 0.028169014084507043,
+      "tone_diff": 1.4790358669847357
     },
     {
       "source": "bostonherald.com",
@@ -1261,21 +1261,15 @@
     },
     {
       "source": "bostonherald.com",
-      "target": "nbcphiladelphia.com",
-      "weight": 0.028169014084507043,
-      "tone_diff": 1.4790358669847357
-    },
-    {
-      "source": "bostonherald.com",
       "target": "chicagotribune.com",
       "weight": 0.03120220250841236,
       "tone_diff": 0.7356014796421462
     },
     {
-      "source": "seattletimes.com",
+      "source": "bostonherald.com",
       "target": "nbcwashington.com",
-      "weight": 0.045548654244306416,
-      "tone_diff": 1.1458024281542316
+      "weight": 0.031055900621118012,
+      "tone_diff": 0.979145221119891
     },
     {
       "source": "seattletimes.com",
@@ -1290,10 +1284,10 @@
       "tone_diff": 1.0735406019782545
     },
     {
-      "source": "nbclosangeles.com",
+      "source": "seattletimes.com",
       "target": "nbcwashington.com",
-      "weight": 0.0449438202247191,
-      "tone_diff": 0.6283996713215357
+      "weight": 0.045548654244306416,
+      "tone_diff": 1.1458024281542316
     },
     {
       "source": "nbclosangeles.com",
@@ -1306,6 +1300,12 @@
       "target": "chicagotribune.com",
       "weight": 0.04119850187265917,
       "tone_diff": 0.37481904380228975
+    },
+    {
+      "source": "nbclosangeles.com",
+      "target": "nbcwashington.com",
+      "weight": 0.0449438202247191,
+      "tone_diff": 0.6283996713215357
     },
     {
       "source": "nbcwashington.com",

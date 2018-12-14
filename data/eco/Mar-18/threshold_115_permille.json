@@ -11,7 +11,7 @@
       "id": "kdvr.com",
       "size": 26635,
       "name": "FOX31 Denver KDVR",
-      "favicon": null,
+      "favicon": "https://secure.gravatar.com/blavatar/17e52d5bd05a36821dc7d1d5f90e105c?s=32",
       "avg_tone": -3.601588344702297
     },
     {
@@ -249,7 +249,7 @@
       "id": "mercurynews.com",
       "size": 53289,
       "name": "The Mercury News",
-      "favicon": null,
+      "favicon": "https://www.mercurynews.com/wp-content/uploads/2016/10/32x32-mercury-news-white.png?w=32",
       "avg_tone": -2.957991280834634
     },
     {
@@ -347,15 +347,15 @@
   "edges": [
     {
       "source": "wtop.com",
-      "target": "miamiherald.com",
-      "weight": 0.1348002563554796,
-      "tone_diff": 0.7658483585545875
-    },
-    {
-      "source": "wtop.com",
       "target": "stltoday.com",
       "weight": 0.13522751548814355,
       "tone_diff": 0.5225449185462144
+    },
+    {
+      "source": "wtop.com",
+      "target": "miamiherald.com",
+      "weight": 0.1348002563554796,
+      "tone_diff": 0.7658483585545875
     },
     {
       "source": "abc13.com",
@@ -377,6 +377,12 @@
     },
     {
       "source": "stltoday.com",
+      "target": "nydailynews.com",
+      "weight": 0.15615354938271606,
+      "tone_diff": 0.48151060054644684
+    },
+    {
+      "source": "stltoday.com",
       "target": "nbcwashington.com",
       "weight": 0.1183206106870229,
       "tone_diff": 0.4176331739242696
@@ -386,12 +392,6 @@
       "target": "seattlepi.com",
       "weight": 0.17660510114335973,
       "tone_diff": 0.43204932161273174
-    },
-    {
-      "source": "stltoday.com",
-      "target": "nydailynews.com",
-      "weight": 0.15615354938271606,
-      "tone_diff": 0.48151060054644684
     },
     {
       "source": "stltoday.com",

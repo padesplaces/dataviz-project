@@ -11,7 +11,7 @@
       "id": "kdvr.com",
       "size": 26635,
       "name": "FOX31 Denver KDVR",
-      "favicon": null,
+      "favicon": "https://secure.gravatar.com/blavatar/17e52d5bd05a36821dc7d1d5f90e105c?s=32",
       "avg_tone": -3.557859414776456
     },
     {
@@ -319,17 +319,11 @@
       "id": "mercurynews.com",
       "size": 53289,
       "name": "The Mercury News",
-      "favicon": null,
+      "favicon": "https://www.mercurynews.com/wp-content/uploads/2016/10/32x32-mercury-news-white.png?w=32",
       "avg_tone": -5.58659217877095
     }
   ],
   "edges": [
-    {
-      "source": "kxan.com",
-      "target": "seattlepi.com",
-      "weight": 0.17317073170731706,
-      "tone_diff": 0.9569628246538839
-    },
     {
       "source": "kxan.com",
       "target": "seattletimes.com",
@@ -343,28 +337,16 @@
       "tone_diff": 0.6669807505797348
     },
     {
+      "source": "kxan.com",
+      "target": "seattlepi.com",
+      "weight": 0.17317073170731706,
+      "tone_diff": 0.9569628246538839
+    },
+    {
       "source": "wtop.com",
       "target": "miamiherald.com",
       "weight": 0.2156029838375466,
       "tone_diff": 0.44034801573960275
-    },
-    {
-      "source": "wtop.com",
-      "target": "foxnews.com",
-      "weight": 0.21181312030985233,
-      "tone_diff": 0.5000368245294525
-    },
-    {
-      "source": "wtop.com",
-      "target": "boston.com",
-      "weight": 0.19469210035247772,
-      "tone_diff": 0.3895167272723133
-    },
-    {
-      "source": "wtop.com",
-      "target": "seattlepi.com",
-      "weight": 0.33085209392398934,
-      "tone_diff": 0.7179960936274794
     },
     {
       "source": "wtop.com",
@@ -377,6 +359,24 @@
       "target": "bostonherald.com",
       "weight": 0.1636177918098245,
       "tone_diff": 0.4641194267011554
+    },
+    {
+      "source": "wtop.com",
+      "target": "foxnews.com",
+      "weight": 0.21181312030985233,
+      "tone_diff": 0.5000368245294525
+    },
+    {
+      "source": "wtop.com",
+      "target": "seattlepi.com",
+      "weight": 0.33085209392398934,
+      "tone_diff": 0.7179960936274794
+    },
+    {
+      "source": "wtop.com",
+      "target": "boston.com",
+      "weight": 0.19469210035247772,
+      "tone_diff": 0.3895167272723133
     },
     {
       "source": "abc13.com",
@@ -398,12 +398,6 @@
     },
     {
       "source": "boston.com",
-      "target": "seattlepi.com",
-      "weight": 0.2919344806137259,
-      "tone_diff": 0.6744872060807792
-    },
-    {
-      "source": "boston.com",
       "target": "seattletimes.com",
       "weight": 0.28758034418411776,
       "tone_diff": 0.36274755100517975
@@ -415,16 +409,22 @@
       "tone_diff": 0.6222379243503975
     },
     {
-      "source": "seattlepi.com",
-      "target": "miamiherald.com",
-      "weight": 0.25010360547036886,
-      "tone_diff": 0.6293449364535962
+      "source": "boston.com",
+      "target": "seattlepi.com",
+      "weight": 0.2919344806137259,
+      "tone_diff": 0.6744872060807792
     },
     {
       "source": "seattlepi.com",
       "target": "seattletimes.com",
       "weight": 0.32642374935087415,
       "tone_diff": 0.6797331858789828
+    },
+    {
+      "source": "seattlepi.com",
+      "target": "miamiherald.com",
+      "weight": 0.25010360547036886,
+      "tone_diff": 0.6293449364535962
     },
     {
       "source": "seattlepi.com",
@@ -452,9 +452,9 @@
     },
     {
       "source": "nbcsandiego.com",
-      "target": "nbcwashington.com",
-      "weight": 0.16483516483516483,
-      "tone_diff": 0.22118178300396366
+      "target": "nbcphiladelphia.com",
+      "weight": 0.16737109044801352,
+      "tone_diff": 0.15332954402088772
     },
     {
       "source": "nbcsandiego.com",
@@ -464,9 +464,9 @@
     },
     {
       "source": "nbcsandiego.com",
-      "target": "nbcphiladelphia.com",
-      "weight": 0.16737109044801352,
-      "tone_diff": 0.15332954402088772
+      "target": "nbcwashington.com",
+      "weight": 0.16483516483516483,
+      "tone_diff": 0.22118178300396366
     },
     {
       "source": "bostonherald.com",

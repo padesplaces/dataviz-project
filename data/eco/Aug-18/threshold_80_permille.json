@@ -11,7 +11,7 @@
       "id": "kdvr.com",
       "size": 26635,
       "name": "FOX31 Denver KDVR",
-      "favicon": null,
+      "favicon": "https://secure.gravatar.com/blavatar/17e52d5bd05a36821dc7d1d5f90e105c?s=32",
       "avg_tone": -3.5735545916976332
     },
     {
@@ -319,27 +319,21 @@
   "edges": [
     {
       "source": "wtop.com",
-      "target": "seattlepi.com",
-      "weight": 0.10053475935828877,
-      "tone_diff": 0.7842818821977355
-    },
-    {
-      "source": "wtop.com",
       "target": "seattletimes.com",
       "weight": 0.09989304812834225,
       "tone_diff": 0.6248872525213907
+    },
+    {
+      "source": "wtop.com",
+      "target": "seattlepi.com",
+      "weight": 0.10053475935828877,
+      "tone_diff": 0.7842818821977355
     },
     {
       "source": "abc13.com",
       "target": "abc7news.com",
       "weight": 0.20743034055727555,
       "tone_diff": 0.16672414253521112
-    },
-    {
-      "source": "boston.com",
-      "target": "seattlepi.com",
-      "weight": 0.09554597701149425,
-      "tone_diff": 0.6831446714570748
     },
     {
       "source": "boston.com",
@@ -354,6 +348,12 @@
       "tone_diff": 1.0032623122649902
     },
     {
+      "source": "boston.com",
+      "target": "seattlepi.com",
+      "weight": 0.09554597701149425,
+      "tone_diff": 0.6831446714570748
+    },
+    {
       "source": "newsmax.com",
       "target": "theonion.com",
       "weight": 0.09090909090909091,
@@ -361,15 +361,15 @@
     },
     {
       "source": "seattlepi.com",
-      "target": "miamiherald.com",
-      "weight": 0.0852824757106873,
-      "tone_diff": 0.5491650652926015
-    },
-    {
-      "source": "seattlepi.com",
       "target": "seattletimes.com",
       "weight": 0.09720944495553512,
       "tone_diff": 0.7514297876473112
+    },
+    {
+      "source": "seattlepi.com",
+      "target": "miamiherald.com",
+      "weight": 0.0852824757106873,
+      "tone_diff": 0.5491650652926015
     }
   ]
 }
