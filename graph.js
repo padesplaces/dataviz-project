@@ -15,6 +15,10 @@ let linksColorScale = d3.scale.linear();
 let overable = true;
 let sourceFocus = "";
 
+let month = 0;
+let theme = 'all';
+let threshold = 30;
+
 // "class" constructor, used to construct the circle graph
 // param container: the html svg id that will contain the circle graph
 // param w: width of container
@@ -258,10 +262,9 @@ let updateSize = function(event) {
 window.onresize = updateSize;
 
 // parse data and call graph drawing
-function loadData(threshold) {
-	let theme = 'all';
+function loadData() {
 	updateThresholdDisplay(threshold);
-	fetch('data/'+theme+'/0/threshold_' + threshold + '_permille.json', {mode: 'no-cors'})
+	fetch('data/'+theme+'/'+month+'/threshold_' + threshold + '_permille.json', {mode: 'no-cors'})
 	.then(function(res) {
 		return res.json();
 	}).then(function(json) {
@@ -272,6 +275,7 @@ function loadData(threshold) {
 		linkScale.domain([d3.min(json.edges, d => d.weight), d3.max(json.edges, d => d.weight)]).range([0.3,0.7]);
 		
 		nodesColorScale.domain([-10, 10]).range([0.0, 1.0]);
+		
 		linksColorScale.domain([0.0, d3.max(json.edges, d => d.tone_diff)]).range([0.0,1.0]);
 		
 		let nodes = [];
@@ -337,22 +341,25 @@ function loadData(threshold) {
 }
 
 window.onload = function() {
-	loadData(30);
+	loadData();
+
 	let logoElem = document.getElementById('panel_logo')
 	logoElem.onerror = function() {
 		logoElem.style.visibility = "hidden";
 	}
-
-	var mySlider = $("input.slider").slider();
 	
 	document.getElementById('slider_threshold').onchange = function() {
-		loadData(this.value);
+		threshold = parseInt(this.value);
+
+		loadData();
 	}
 
-	putGrayout();
     document.getElementById('theme_selecter').onchange = function() {
-        console.log(this.value);
+    	theme = this.value;
+        loadData();
     }
+
+    //putGrayout();
 }
 
 function updateThresholdDisplay(threshold) {
