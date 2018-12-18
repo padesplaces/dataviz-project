@@ -31,6 +31,7 @@ html, body {
 
 #canvas_container {
     height: 100%;
+    margin-top: -100px;
 }
 
 #main_title {
@@ -217,4 +218,59 @@ html, body {
 
 .x.axis path {
   display: none;
+}
+
+.dark-mode {
+    background: #222;
+    color: white;
+}
+
+.nice-select {
+    color: black !important;
+}
+
+#time_slider_super {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    padding-bottom: 20px;
+}
+
+#time_slider {
+    width: 70%;
+    min-width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#time_slider_input {
+    width: 95%;
+}
+#time_slider_labels {
+    width: 100%;
+}
+
+#time_slider_labels {
+    display: flex;
+    justify-content: space-between;
+}
+
+.time_month_label {
+    font-size: 10px;
+    width: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    /*writing-mode: vertical-rl;*/
+    /*-webkit-transform: rotate(180deg);*/
+    /*-moz-transform: rotate(180deg);*/
+    /*-ms-transform: rotate(180deg);*/
+    /*-o-transform: rotate(180deg);*/
+    /*transform: rotate(180deg);*/
+}
+
+.time_month_label_selected {
+    font-size: 12px;
+    font-weight: bold;
 }
