@@ -1,7 +1,7 @@
 let radiusScale = d3.scale.sqrt();
-let linkScale = d3.scale.sqrt();
+let linkScale = d3.scale.linear();
 let nodesColorScale = d3.scale.linear();
-let linksColorScale = d3.scale.linear();
+let linksColorScale = d3.scale.sqrt();
 
 let hoverAble = true;
 let sourceFocus = "";

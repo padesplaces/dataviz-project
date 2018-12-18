@@ -31,7 +31,7 @@ html, body {
 
 #canvas_container {
     height: 100%;
-    margin-top: -100px;
+    margin-top: -80px;
 }
 
 #main_title {
@@ -128,7 +128,9 @@ html, body {
     /* stroke: #bbb; */
     /* stroke-opacity: .4; */
     fill: none;
+    stroke-opacity: .3;
     pointer-events: none;
+
 }
 
 .node-label {
@@ -233,12 +235,12 @@ html, body {
     width: 100%;
     justify-content: center;
     display: flex;
-    padding-bottom: 20px;
+    margin-top: -40px;
 }
 
 #time_slider {
     width: 70%;
-    min-width: 400px;
+    /*min-width: 400px;*/
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -273,4 +275,32 @@ html, body {
 .time_month_label_selected {
     font-size: 12px;
     font-weight: bold;
+}
+
+#legend_container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.color_scale {
+    width: 200px;
+    height: 28px;
+}
+
+.legend_group {
+    display: flex;
+    flex-direction: column;
+}
+
+.legend_group_line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.scale_value {
+    width: 40px;
+    text-align: center;
 }

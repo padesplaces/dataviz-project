@@ -57,11 +57,11 @@ CircleGraph.prototype.setData = function (graph) {
         .attr("d", function (d, i) { // compute spline line
             return that.line(splines[i]);
         })
-        .style("stroke-opacity", function (d) {
+        .style("stroke-width", function (d) {
             return linkScale(d.weight); // display opacity depending on the weight of the edge
         })
         .style("stroke", function (d) {
-            return d3.interpolatePiYG(1 - linksColorScale(d.tone_diff));
+            return d3.interpolateViridis(1 - linksColorScale(d.tone_diff));
         });
 
     // draw sources nodes
