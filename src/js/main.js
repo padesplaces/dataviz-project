@@ -19,5 +19,5 @@ window.onload = function () {
     };
 
     updateMonthSelect();
-    //putGrayout();
+    putGrayout();
 };

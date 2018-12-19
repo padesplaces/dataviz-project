@@ -8,7 +8,7 @@ html, body {
     width: 100%;
     margin: 0;
     font-family: 'Lora', serif;
-    
+
 }
 
 #super_container {
@@ -61,13 +61,13 @@ html, body {
     margin-bottom: 5px;
 }
 
-@media (max-width: 950px){
+@media (max-width: 950px) {
     #super_panel_container {
         min-width: auto !important;
         max-width: initial !important;
         width: 100%;
         height: auto !important;
-    } 
+    }
 }
 
 #super_panel_container {
@@ -76,17 +76,17 @@ html, body {
     flex-grow: 1;
     height: 100%;
     background: #eee;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+
     padding-left: 5px;
     padding-right: 5px;
-    
+
     color: #444;
     text-align: center;
-    
+
 }
 
 #panel_container {
@@ -137,7 +137,7 @@ html, body {
 
 }
 
-.node--selected {    
+.node--selected {
     /* fill: #000; */
 }
 
@@ -168,58 +168,68 @@ html, body {
     opacity: 0.5;
     z-index: 999;
     color: white;
- }
+}
 
- #closeGrayout {
-     position: absolute;
-     top: 20px;
-     left: 20px;
-     z-index: 1000;
- }
+#closeGrayout {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
 
- .clickable {
+.clickable {
     cursor: pointer;
- }
+}
 
- .panel_controls_sub {
+.panel_controls_sub {
     margin-bottom: 30px;
- }
+}
 
- #slider_threshold {
-     padding-left: 5px;
-     padding-right: 5px;
- }
+#slider_threshold {
+    padding-left: 5px;
+    padding-right: 5px;
+}
 
-#theme_label{
+#theme_label {
     margin-right: 10px;
+    align-self: center;
 }
 
 #theme_container {
-    padding-right: 20px;
-    margin-bottom: -20px;
+    position: relative;
+    right: 20px;
+
+}
+
+#theme_container_sub {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    height: 42px;
 }
 
 .bar {
-  fill: steelblue;
+    fill: steelblue;
 }
 
 .bar:hover {
-  fill: lightblue;
+    fill: lightblue;
 }
 
 .axis text {
-  font: 10px sans-serif;
+    font: 10px sans-serif;
 }
 
 .axis path,
 .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
 }
 
 .x.axis path {
-  display: none;
+    display: none;
 }
 
 .dark-mode {
@@ -248,7 +258,9 @@ html, body {
 
 #time_slider_input {
     width: 95%;
+    margin-bottom: 10px;
 }
+
 #time_slider_labels {
     width: 100%;
 }
@@ -288,19 +300,47 @@ html, body {
     height: 28px;
 }
 
+#legend_container {
+}
+
+#legend_title {
+    font-size: 20px;
+}
+
 .legend_group {
     display: flex;
     flex-direction: column;
+    font-size: 12px;
 }
 
 .legend_group_line {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 20px;
 }
-
 
 .scale_value {
     width: 40px;
     text-align: center;
+}
+
+.tooltip-inner {
+    font-size: 10px;
+}
+
+#tutorial_button {
+    margin-right: 30px;
+}
+
+#left_tooltip {
+    position: absolute;
+    top: 450px;
+    left: 20%;
+}
+
+#right_tooltip {
+    position: absolute;
+    top: 450px;
+    left: 50%;
 }
