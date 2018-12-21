@@ -91,7 +91,7 @@ Promise.all([
 				
 			});  
 			
-			// cy.autoungrabify( true );
+			cy.autoungrabify( true );
 			cy.zoomingEnabled( false );
 			
 		})
