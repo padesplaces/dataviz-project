@@ -71,7 +71,7 @@ const clusters = {'pk': {'x': 1000.0, 'y': 400.0},
  'kr': {'x': 984.7759065022573, 'y': 323.4633135269819},
  'mk': {'x': 1000.0, 'y': 399.99999999999994}};
 
-d3.json("../../data/old/network-month-300.json", function(json) {
+d3.json("../../data/deprecated/network-month-300.json", function(json) {
 
 	radiusScale.domain([d3.min(json.nodes, d => d.size), d3.max(json.nodes, d => d.size)]).range([5,15]);
 	edgeScale.domain([d3.min(json.edges, d => d.weight), d3.max(json.edges, d => d.weight)]).range([1,10]);
