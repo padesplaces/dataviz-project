@@ -21,7 +21,7 @@ function initGrayout() {
 
 function removeGrayout() {
     document.getElementById('grayout').style.display = "none";
-    $(".tutorial-tooltip").tooltip('hide');
+    $(".tooltip").remove();
     grayout = false;
     showStory();
 }
