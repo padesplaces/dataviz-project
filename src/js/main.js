@@ -2,7 +2,7 @@
 
 
 window.onload = function () {
-    loadData().then(showStory);
+    loadData().then(putGrayout);
 
     let logoElem = document.getElementById('panel_logo');
     logoElem.onerror = function () {

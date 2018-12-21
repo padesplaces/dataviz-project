@@ -1,3 +1,5 @@
+let grayout = false;
+
 function initGrayout() {
     let classTooltip = 'tutorial-tooltip';
     let allNodes = document.getElementsByTagName('circle');
@@ -20,10 +22,14 @@ function initGrayout() {
 function removeGrayout() {
     document.getElementById('grayout').style.display = "none";
     $(".tutorial-tooltip").tooltip('hide');
+    grayout = false;
+    showStory();
 }
 
 function putGrayout() {
+    hideStory();
     document.getElementById('grayout').style.display = "block";
     $(".tutorial-tooltip").tooltip('show');
+    grayout = true;
 }
 

@@ -52,7 +52,15 @@ function updateThreshold() {
 }
 
 function updateThemeFilter() {
-
+    let div = document.getElementsByClassName('nice-select')[0];
+    div.children[0].innerHTML = themes[theme];
+    for (let li of div.children[1].children) {
+        if (li.innerHTML === themes[theme]) {
+            li.className = "option selected";
+        } else {
+            li.className = "option";
+        }
+    }
 }
 
 

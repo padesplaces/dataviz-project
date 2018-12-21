@@ -22,6 +22,8 @@ function updateToolbox(node) {
     }
 }
 
+// code inspired by
+// https://bl.ocks.org/tpham27/37d682cc63fc29da314c6d28417fce3f?fbclid=IwAR15j7lVnr1p3gIFEMbw-NJ-DSXgiIQlKpoSGUvMbWQA9z0aAY-pdaG9Qpg
 function plotHistogram(source_name, source_month) {
     var margin = {top: 20, right: 20, bottom: 40, left: 60},
         width = 300 - margin.left - margin.right,
