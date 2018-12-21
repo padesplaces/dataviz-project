@@ -5,8 +5,8 @@ function updateToolbox(node) {
         document.getElementById("panel_title").innerHTML = node.fullname;
         document.getElementById("panel_link").setAttribute("href", "http://" + node.name);
         document.getElementById("themes-histogram").innerHTML = "";
-        document.getElementById("panel_count_articles").innerHTML = parseInt(node.size).toLocaleString('fr') + " articles written";
-        plotHistogram(node.name);
+        document.getElementById("panel_count_articles").innerHTML = parseInt(node.size).toLocaleString('fr') + " articles written this year";
+        plotHistogram(node.name, month);
     } else {
         document.getElementById("panel_title").innerHTML = "";
         document.getElementById("panel_count_articles").innerHTML = "";
@@ -22,7 +22,7 @@ function updateToolbox(node) {
     }
 }
 
-function plotHistogram(source_name) {
+function plotHistogram(source_name, source_month) {
     var margin = {top: 20, right: 20, bottom: 40, left: 60},
         width = 300 - margin.left - margin.right,
         height = 300 - margin.top - margin.bottom;
@@ -36,14 +36,14 @@ function plotHistogram(source_name) {
     var x = d3.scale.ordinal().rangeRoundBands([0, width], .1);
     var y = d3.scale.linear().range([height, 0]);
 
-    d3.csv("../data/sources/theme_repartition/" + source_name + ".csv", function (error, data) {
+    d3.csv("../data/histograms/" + source_month + "/" + source_name + ".csv", function (error, data) {
         if (error) throw error;
 
         x.domain(data.map(function (d) {
             return d.Theme;
         }));
         y.domain([0, d3.max(data, function (d) {
-            return parseInt(d.Count);
+            return parseInt(d.count);
         })]);
 
         svg.selectAll(".bar")
@@ -55,10 +55,13 @@ function plotHistogram(source_name) {
             })
             .attr("width", x.rangeBand())
             .attr("y", function (d) {
-                return y(d.Count);
+                return y(d.count);
             })
             .attr("height", function (d) {
-                return height - y(d.Count);
+                return height - y(d.count);
+            })
+            .style("fill", function (d) {
+                return d3.interpolateRdBu(nodesColorScale(d.avg_tone));
             });
 
         var xAxis = d3.svg.axis().scale(x).orient("bottom");

@@ -103,6 +103,7 @@ html, body {
     overflow-wrap: break-word;
     word-wrap: break-word;
     font-style: italic;
+    color: #444;
 }
 
 #panel_logo {
@@ -182,6 +183,10 @@ html, body {
 }
 
 .panel_controls_sub {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
     margin-bottom: 30px;
 }
 
@@ -211,10 +216,6 @@ html, body {
 
 .bar {
     fill: steelblue;
-}
-
-.bar:hover {
-    fill: lightblue;
 }
 
 .axis text {
@@ -318,7 +319,7 @@ html, body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .scale_value {
@@ -331,17 +332,17 @@ html, body {
 }
 
 #tutorial_button {
-    margin-right: 30px;
+    margin-bottom: 20px;
 }
 
 /*#left_tooltip {*/
-    /*position: absolute;*/
-    /*top: 450px;*/
-    /*left: 20%;*/
+/*position: absolute;*/
+/*top: 450px;*/
+/*left: 20%;*/
 /*}*/
 
 /*#right_tooltip {*/
-    /*position: absolute;*/
-    /*top: 450px;*/
-    /*left: 50%;*/
+/*position: absolute;*/
+/*top: 450px;*/
+/*left: 50%;*/
 /*}*/

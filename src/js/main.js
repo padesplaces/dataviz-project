@@ -2,7 +2,7 @@
 
 
 window.onload = function () {
-    loadData().then(putGrayout);
+    loadData().then(showStory);
 
     let logoElem = document.getElementById('panel_logo');
     logoElem.onerror = function () {
@@ -19,5 +19,4 @@ window.onload = function () {
     };
 
     updateMonthSelect();
-    // putGrayout();
 };

@@ -43,6 +43,19 @@ function switchDarkMode() {
     }
 }
 
+function updateTimeSlider() {
+    document.getElementById('time_slider_input').value = months.findIndex(elem => elem === month);
+}
+
+function updateThreshold() {
+    document.getElementById('slider_threshold').value = threshold;
+}
+
+function updateThemeFilter() {
+
+}
+
+
 // Change input value on label click
 $('.range-labels li').on('click', function () {
     var index = $(this).index();

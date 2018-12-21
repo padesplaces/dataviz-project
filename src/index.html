@@ -47,6 +47,7 @@
     <script src="js/graph.js"></script>
     <script src="js/toolbox.js"></script>
     <script src="js/tutorial.js"></script>
+    <script src="js/story.js"></script>
     <script src="js/style.js"></script>
 </head>
 
@@ -75,7 +76,7 @@
                 <span class="legend_label">Edges color</span>
                 <div class="legend_group_line tutorial-tooltip" data-toggle="tooltip" data-trigger="manual"
                      data-placement="right"
-                     title="Edges' colors correspond tone difference between two sources (yellow means close to consensus, purple means different point of views)">
+                     title="Edges' colors correspond to the average tone difference between two sources on similar events (yellow means close to consensus, purple means different point of views)">
                     <div id="viridis_scale_min" class="scale_value">0.0</div>
                     <img class="color_scale" id="viridis_scale" src="img/viridis.png"/>
                     <div id="viridis_scale_max" class="scale_value">0.0</div>
@@ -104,7 +105,7 @@
             <div id="time_slider" class="tutorial-tooltip"
                  data-toggle="tooltip" data-trigger="manual" data-placement="top"
                  title="Choose the month to filter the articles. Full year corresponds to all data.">
-                <input id="time_slider_input" type="range" min="0" max="13" steps="1" value="0"><br>
+                <input id="time_slider_input" type="range" min="0" max="12" steps="1" value="0"><br>
                 <div id="time_slider_labels">
                     <span class="time_month_label">Full year</span>
                     <span class="time_month_label">Dec '17</span>
@@ -119,7 +120,6 @@
                     <span class="time_month_label">Sep '18</span>
                     <span class="time_month_label">Oct '18</span>
                     <span class="time_month_label">Nov '18</span>
-                    <span class="time_month_label">Dec '18</span>
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@
                                          data-placement="right"
                                          title="Sources ranked by Feedspot.com. Click for full article."
                                          style="color:dodgerblue">?</a><br>
-            Same events coverage
+            Coverage Comparison
         </h4>
         <div id="panel_container">
             <div id="panel">
@@ -161,6 +161,7 @@
                     Display tutorial</a>
                 <a id="darkmode_button" onclick="switchDarkMode()" class="clickable"><i class="fas fa-moon"></i> Night
                     mode</a>
+                <a id="story_mode" onclick="showStory()" class="clickable"><i class="fas fa-book"></i> Show story example</a>
             </div>
         </div>
         <span id="copyright">© Pierre-Antoine Desplaces, Loïc Serafin</span>
