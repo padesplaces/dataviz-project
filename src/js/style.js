@@ -53,7 +53,7 @@ $('.range-labels li').on('click', function () {
 
 // Bootstrap functions
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 $(document).ready(function () {

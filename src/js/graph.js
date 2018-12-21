@@ -118,6 +118,8 @@ CircleGraph.prototype.setData = function (graph) {
         .on("mouseout", mouseouted)
         .on("click", mouseclicked);
 
+    initGrayout();
+
     // mouse click interactions
     function mouseclicked(d) {
         if (hoverAble) { // if we are in overing mode
