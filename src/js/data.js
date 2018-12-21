@@ -1,7 +1,7 @@
 // parse data and call graph drawing
 function loadData() {
     updateThresholdDisplay(threshold);
-    fetch('../data/' + theme + '/' + month + '/threshold_0_permille.json', {mode: 'no-cors'})
+    return fetch('../data/' + theme + '/' + month + '/threshold_0_permille.json', {mode: 'no-cors'})
         .then(function (res) {
             return res.json();
         })
@@ -17,7 +17,7 @@ function loadData() {
             document.getElementById('viridis_scale_max').innerText = (scaleValues.toneMax*0.4).toFixed(2);
             document.getElementById('viridis_scale_min').innerText = (scaleValues.toneMin).toFixed(2);
 
-            fetch('../data/' + theme + '/' + month + '/threshold_' + threshold + '_permille.json', {mode: 'no-cors'})
+            return fetch('../data/' + theme + '/' + month + '/threshold_' + threshold + '_permille.json', {mode: 'no-cors'})
                 .then(function (res) {
                     return res.json();
                 })

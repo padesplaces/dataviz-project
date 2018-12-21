@@ -54,9 +54,7 @@
 </style>
 
 <body>
-<div id="grayout" style="display: none;">
-    <span onclick="removeGrayout()" id="closeGrayout" class="clickable"><i class="fas fa-times fa-3x"></i></span>
-</div>
+<div id="grayout" style="display: none;" onclick="removeGrayout()" class="clickable"></div>
 <div id="super_container">
     <div id="main_container">
         <div id="legend_container">
@@ -101,12 +99,6 @@
                 </div>
             </div>
         </div>
-        <span id="left_tooltip" class="tutorial-tooltip"
-               data-toggle="tooltip" data-trigger="manual" data-placement="left"
-               title="Nodes radius correspond to the number of articles written by that source"></span>
-        <span id="right_tooltip" class="tutorial-tooltip"
-               data-toggle="tooltip" data-trigger="manual" data-placement="right"
-               title="Edges width correspond to the common coverage of events in number of articles"></span>
         <div id="canvas_container" ></div>
         <div id="time_slider_super">
             <div id="time_slider" class="tutorial-tooltip"
