@@ -3,6 +3,7 @@
 <p align="center"><img src="doc/screenshot.png" width="500"/></p>
 
 ## Setup
+You can host this application by serving all the static files in this directory, and access `index.html` from the `src` folder in your browser.
 There are several directories in this repository:
 
 - `data/` containing precomputed networks using our data exploration
